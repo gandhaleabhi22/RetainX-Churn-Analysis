@@ -1,0 +1,509 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>RetainX | Login</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        .login-container {
+            min-height: calc(100vh - 180px);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: linear-gradient(135deg, #FFFFFB 0%, #C8D9EE 100%);
+            padding: 20px;
+            margin-top: 70px;
+        }
+
+        .login-card {
+            background: #FFFFFB;
+            border-radius: 15px;
+            box-shadow: 0 20px 40px rgba(47, 65, 86, 0.1);
+            width: 100%;
+            max-width: 400px;
+            overflow: hidden;
+            border: 1px solid #C8D9EE;
+            margin-top: 20px;
+        }
+
+        .login-header {
+            background: linear-gradient(135deg, #2F4156 0%, #567C8D 100%);
+            color: #FFFFFB;
+            padding: 2rem;
+            text-align: center;
+        }
+
+        .login-header h1 {
+            font-size: 2rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .login-header p {
+            opacity: 0.9;
+            color: #F5FEBB;
+        }
+
+        .login-header i {
+            color: #F5FEBB;
+            margin-bottom: 1rem;
+        }
+
+        .login-form {
+            padding: 2rem;
+        }
+
+        .form-group {
+            margin-bottom: 1.5rem;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 0.5rem;
+            color: #2F4156;
+            font-weight: 600;
+        }
+
+        .form-group label i {
+            color: #567C8D;
+            margin-right: 0.5rem;
+        }
+
+        .form-control {
+            width: 100%;
+            padding: 0.8rem 1rem;
+            border: 2px solid #C8D9EE;
+            border-radius: 8px;
+            font-size: 1rem;
+            transition: all 0.3s;
+            background: #FFFFFB;
+            color: #2F4156;
+        }
+
+        .form-control:focus {
+            outline: none;
+            border-color: #567C8D;
+            box-shadow: 0 0 0 3px rgba(86, 124, 141, 0.1);
+        }
+
+        .password-input {
+            position: relative;
+        }
+
+        .toggle-password {
+            position: absolute;
+            right: 10px;
+            top: 50%;
+            transform: translateY(-50%);
+            background: none;
+            border: none;
+            color: #567C8D;
+            cursor: pointer;
+            font-size: 1rem;
+        }
+
+        .toggle-password:hover {
+            color: #2F4156;
+        }
+
+        .login-btn {
+            width: 100%;
+            padding: 1rem;
+            background: linear-gradient(135deg, #567C8D 0%, #2F4156 100%);
+            color: #FFFFFB;
+            border: none;
+            border-radius: 8px;
+            font-size: 1rem;
+            font-weight: bold;
+            cursor: pointer;
+            transition: all 0.3s;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 0.5rem;
+        }
+
+        .login-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 20px rgba(86, 124, 141, 0.3);
+        }
+
+        .login-btn:disabled {
+            opacity: 0.6;
+            cursor: not-allowed;
+        }
+
+        .login-footer {
+            text-align: center;
+            padding: 1.5rem 2rem;
+            border-top: 1px solid #C8D9EE;
+            color: #567C8D;
+        }
+
+        .login-footer a {
+            color: #2F4156;
+            text-decoration: none;
+            font-weight: 600;
+        }
+
+        .login-footer a:hover {
+            color: #567C8D;
+            text-decoration: underline;
+        }
+
+        .demo-login {
+            margin-top: 1rem;
+            text-align: center;
+        }
+
+        .demo-btn {
+            width: 100%;
+            padding: 0.8rem;
+            background: #F5FEBB;
+            color: #2F4156;
+            border: 2px solid #F5FEBB;
+            border-radius: 8px;
+            cursor: pointer;
+            font-weight: bold;
+            transition: all 0.3s;
+            font-size: 0.95rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 0.5rem;
+        }
+
+        .demo-btn:hover {
+            background: transparent;
+            color: #2F4156;
+            border-color: #567C8D;
+        }
+
+        .alert {
+            padding: 1rem;
+            border-radius: 8px;
+            margin-bottom: 1rem;
+            display: none;
+        }
+
+        .alert-success {
+            background: rgba(245, 254, 187, 0.3);
+            color: #2F4156;
+            border: 1px solid #F5FEBB;
+        }
+
+        .alert-error {
+            background: rgba(86, 124, 141, 0.1);
+            color: #2F4156;
+            border: 1px solid #567C8D;
+        }
+
+        .api-status {
+            margin-top: 1rem;
+            padding: 0.5rem;
+            border-radius: 5px;
+            font-size: 0.9rem;
+            text-align: center;
+        }
+
+        .api-status.online {
+            background: rgba(245, 254, 187, 0.3);
+            color: #2F4156;
+        }
+
+        .api-status.offline {
+            background: rgba(47, 65, 86, 0.1);
+            color: #2F4156;
+        }
+
+        @media (max-width: 480px) {
+            .login-card {
+                margin: 1rem;
+            }
+            .login-header {
+                padding: 1.5rem;
+            }
+            .login-form {
+                padding: 1.5rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <nav class="navbar">
+    <div class="container">
+        <a href="index.html" class="logo">
+            <i class="fas fa-chart-line"></i>
+            <span>RetainX</span>
+        </a>
+
+        <button class="menu-toggle" id="menuToggle">
+            <i class="fas fa-bars"></i>
+        </button>
+
+        <ul class="nav-links" id="navLinks">
+            <li><a href="index.html">Home</a></li>
+            <li><a href="dashboard.html">Dashboard</a></li>
+            <li><a href="data-input.html">Data Input</a></li>
+            <li><a href="analysis.html">Analytics</a></li>
+            <li><a href="reports.html">Reports</a></li>
+            <li><a href="model-performance.html">Model</a></li>
+            <li><a href="retention.html">Retention</a></li>
+            <li class="user-dropdown" id="userDropdown">
+                <button class="user-dropdown-btn" id="userDropdownBtn">
+                    <i class="fas fa-user-circle"></i>
+                    <span id="userNameNav">Account</span>
+                    <i class="fas fa-chevron-down"></i>
+                </button>
+                <div class="user-dropdown-content" id="userDropdownContent">
+                    <div class="user-info">
+                        <div class="user-avatar-dropdown">
+                            <i class="fas fa-user"></i>
+                        </div>
+                        <div class="user-name-dropdown" id="dropdownUserName">User</div>
+                        <div class="user-email-dropdown" id="dropdownUserEmail">user@example.com</div>
+                    </div>
+                    <div class="dropdown-divider"></div>
+                    <div class="dropdown-item logout" id="logoutDropdownBtn">
+                        <i class="fas fa-sign-out-alt"></i>
+                        <span>Logout</span>
+                    </div>
+                </div>
+            </li>
+        </ul>
+    </div>
+</nav>
+    <div class="login-container">
+        <div class="login-card">
+            <div class="login-header">
+                <i class="fas fa-chart-line fa-3x"></i>
+                <h1>Welcome Back</h1>
+                <p>Login to access your dashboard</p>
+            </div>
+
+            <form id="loginForm" class="login-form">
+                <div class="alert" id="alertMessage"></div>
+
+                <div class="form-group">
+                    <label for="email"><i class="fas fa-envelope"></i> Email Address</label>
+                    <input type="email" id="email" name="email" class="form-control" placeholder="Enter your email" required>
+                </div>
+
+                <div class="form-group">
+                    <label for="password"><i class="fas fa-lock"></i> Password</label>
+                    <div class="password-input">
+                        <input type="password" id="password" name="password" class="form-control" placeholder="Enter your password" required>
+                        <button type="button" class="toggle-password" id="togglePassword">
+                            <i class="fas fa-eye"></i>
+                        </button>
+                    </div>
+                </div>
+
+                <button type="submit" class="login-btn" id="loginButton">
+                    <span id="loginText"><i class="fas fa-sign-in-alt"></i> Sign In</span>
+                    <span id="loginLoading" style="display: none;"><i class="fas fa-spinner fa-spin"></i> Signing in...</span>
+                </button>
+
+                <div class="api-status" id="apiStatus">
+                    Checking connection...
+                </div>
+            </form>
+
+            <div class="login-footer">
+                Don't have an account? <a href="register.html">Sign up here</a>
+            </div>
+        </div>
+    </div>
+
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-logo">
+                    <span style="font-weight: 700; font-size: 1.2rem;">RetainX</span>
+                </div>
+                <div class="footer-links">
+                    <a href="index.html">Home</a>
+                    <a href="dashboard.html">Dashboard</a>
+                    <a href="data-input.html">Data Input</a>
+                    <a href="analysis.html">Analytics</a>
+                    <a href="reports.html">Reports</a>
+                </div>
+                <div class="footer-info">
+                    <p>Academic Project | OTT Platform Customer Churn Analysis</p>
+                    <p>© 2024 RetainX. All rights reserved.</p>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const loginForm = document.getElementById('loginForm');
+            const alertMessage = document.getElementById('alertMessage');
+            
+            function showAlert(message, type) {
+                alertMessage.textContent = message;
+                alertMessage.className = `alert alert-${type}`;
+                alertMessage.style.display = 'block';
+                setTimeout(() => {
+                    alertMessage.style.display = 'none';
+                }, 3000);
+            }
+            
+            // Check API status
+            async function checkAPI() {
+                const apiStatus = document.getElementById('apiStatus');
+                try {
+                    const response = await fetch('http://localhost:5001/api/health');
+                    if (response.ok) {
+                        apiStatus.textContent = '✓ Server Connected';
+                        apiStatus.className = 'api-status online';
+                    } else {
+                        apiStatus.textContent = '⚠ Server Error';
+                        apiStatus.className = 'api-status offline';
+                    }
+                } catch (error) {
+                    apiStatus.textContent = '✗ Server Offline - Start server with node server.js';
+                    apiStatus.className = 'api-status offline';
+                }
+            }
+            checkAPI();
+            
+            // Password visibility
+            const togglePassword = document.getElementById('togglePassword');
+            if (togglePassword) {
+                togglePassword.addEventListener('click', function() {
+                    const password = document.getElementById('password');
+                    const type = password.getAttribute('type') === 'password' ? 'text' : 'password';
+                    password.setAttribute('type', type);
+                    this.innerHTML = type === 'password' ? '<i class="fas fa-eye"></i>' : '<i class="fas fa-eye-slash"></i>';
+                });
+            }
+            
+            // Login form submit - works for ANY registered user
+            if (loginForm) {
+                loginForm.addEventListener('submit', async function(e) {
+                    e.preventDefault();
+                    
+                    const email = document.getElementById('email').value.trim();
+                    const password = document.getElementById('password').value;
+                    
+                    if (!email || !password) {
+                        showAlert('Please enter email and password', 'error');
+                        return;
+                    }
+                    
+                    const loginBtn = document.getElementById('loginButton');
+                    const loginText = document.getElementById('loginText');
+                    const loginLoading = document.getElementById('loginLoading');
+                    
+                    loginText.style.display = 'none';
+                    loginLoading.style.display = 'inline';
+                    loginBtn.disabled = true;
+                    
+                    try {
+                        const response = await fetch('http://localhost:5001/api/auth/login', {
+                            method: 'POST',
+                            headers: { 'Content-Type': 'application/json' },
+                            body: JSON.stringify({ email, password })
+                        });
+                        
+                        const data = await response.json();
+                        
+                        if (response.ok && data.success) {
+                            // Save to localStorage
+                            localStorage.setItem('authToken', data.token);
+                            localStorage.setItem('user', JSON.stringify(data.user));
+                            localStorage.setItem('isAuthenticated', 'true');
+                            
+                            showAlert(`Welcome ${data.user.name}! Redirecting...`, 'success');
+                            
+                            setTimeout(() => {
+                                window.location.href = 'dashboard.html';
+                            }, 1000);
+                        } else {
+                            showAlert('Invalid email or password. Please try again.', 'error');
+                            loginText.style.display = 'inline';
+                            loginLoading.style.display = 'none';
+                            loginBtn.disabled = false;
+                        }
+                    } catch (error) {
+                        console.error('Login error:', error);
+                        showAlert('Cannot connect to server. Please make sure server is running on port 5001', 'error');
+                        loginText.style.display = 'inline';
+                        loginLoading.style.display = 'none';
+                        loginBtn.disabled = false;
+                    }
+                });
+            }
+        });
+    </script>
+    <script>
+    // User Dropdown Functionality
+    const userDropdownBtn = document.getElementById('userDropdownBtn');
+    const userDropdownContent = document.getElementById('userDropdownContent');
+    
+    if (userDropdownBtn && userDropdownContent) {
+        userDropdownBtn.addEventListener('click', function(e) {
+            e.stopPropagation();
+            userDropdownContent.classList.toggle('show');
+        });
+        
+        // Close dropdown when clicking outside
+        document.addEventListener('click', function(e) {
+            if (!userDropdownBtn.contains(e.target) && !userDropdownContent.contains(e.target)) {
+                userDropdownContent.classList.remove('show');
+            }
+        });
+    }
+    
+    // Update user info in dropdown
+    const token = localStorage.getItem('authToken');
+    const user = localStorage.getItem('user');
+    
+    if (token && user) {
+        try {
+            const userData = JSON.parse(user);
+            const userNameNav = document.getElementById('userNameNav');
+            const dropdownUserName = document.getElementById('dropdownUserName');
+            const dropdownUserEmail = document.getElementById('dropdownUserEmail');
+            
+            if (userNameNav) userNameNav.textContent = userData.name || 'User';
+            if (dropdownUserName) dropdownUserName.textContent = userData.name || 'User';
+            if (dropdownUserEmail) dropdownUserEmail.textContent = userData.email || 'user@example.com';
+        } catch(e) {}
+    }
+    
+    // Logout functionality
+    const logoutBtn = document.getElementById('logoutDropdownBtn');
+    if (logoutBtn) {
+        logoutBtn.addEventListener('click', function() {
+            localStorage.removeItem('authToken');
+            localStorage.removeItem('user');
+            localStorage.removeItem('isAuthenticated');
+            window.location.href = 'login.html';
+        });
+    }
+    
+    // Mobile menu toggle
+    const menuToggle = document.getElementById('menuToggle');
+    const navLinks = document.getElementById('navLinks');
+    if (menuToggle && navLinks) {
+        menuToggle.addEventListener('click', function() {
+            navLinks.classList.toggle('active');
+        });
+    }
+    
+    // Highlight current page in navbar
+    const currentPage = window.location.pathname.split('/').pop();
+    const navLinkItems = document.querySelectorAll('.nav-links a');
+    navLinkItems.forEach(link => {
+        const linkHref = link.getAttribute('href');
+        if (linkHref === currentPage || (currentPage === '' && linkHref === 'index.html')) {
+            link.classList.add('active');
+        }
+    });
+</script>
+</body>
+</html>

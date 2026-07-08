@@ -1,0 +1,11 @@
+age_group,subscription_duration,subscription_plan,monthly_spend,usage_frequency,nps_score,content_satisfaction,value_perception,churn_likelihood,switching_behavior,account_sharing,competitor_awareness,bundling_preference,payment_method,primary_platform
+18-35,6-12 months,Standard,₹200 - ₹500,Daily,9,5,Excellent value,Very unlikely,No changes,Yes with family,No satisfied with current,Yes definitely,Monthly auto-renewal,Netflix
+35+,1-2 years,Premium,₹501 - ₹1000,Daily,8,4,Good value,Very unlikely,No changes,Yes with family,No satisfied with current,Yes definitely,Annual payment,Amazon Prime Video
+Under 18,Less than 1 month,Basic,Less than ₹200,Rarely,2,1,Poor value,Very likely,Yes switched completely,Yes with friends,Yes actively considering,No prefer separate,Pay as you go,Disney+ Hotstar
+18-35,3-6 months,Standard,₹200 - ₹500,Often,6,3,Average,Not sure,No changes,No only I use it,Yes but not seriously,Maybe depends on price,Monthly auto-renewal,Netflix
+35+,More than 2 years,Premium,More than ₹1000,Daily,10,5,Excellent value,Very unlikely,No changes,Yes with family,No satisfied with current,Yes definitely,Annual payment,Amazon Prime Video
+18-35,1-2 years,Standard,₹501 - ₹1000,Often,7,4,Good value,Not sure,No changes,Yes with family,No satisfied with current,Maybe depends on price,Monthly auto-renewal,Netflix
+Under 18,6-12 months,Basic,Less than ₹200,Rarely,3,2,Poor value,Very likely,Yes switched completely,Yes with friends,Yes actively considering,No prefer separate,Monthly auto-renewal,YouTube Premium
+35+,6-12 months,Premium,₹501 - ₹1000,Daily,9,5,Excellent value,Very unlikely,No changes,Yes with family,No satisfied with current,Yes definitely,Annual payment,Amazon Prime Video
+18-35,Less than 1 month,Basic,₹200 - ₹500,Rarely,4,2,Poor value,Very likely,Yes added new one,Yes with friends,Yes but not seriously,No prefer separate,Monthly auto-renewal,Netflix
+35+,3-6 months,Standard,₹200 - ₹500,Often,7,3,Average,Not sure,No changes,No only I use it,No satisfied with current,Maybe depends on price,Monthly auto-renewal,Amazon Prime Video

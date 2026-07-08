@@ -1,0 +1,1392 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>RetainX | Retention Strategies</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <style>
+        /* Color Variables from Palette */
+        :root {
+            --navy: #2F4156;
+            --teal: #567C8D;
+            --sky-blue: #C8D9E6;
+            --white: #FFFFFF;
+            --beige: #F5F5DC;
+            --cream: #FFFFFB;
+            --light-yellow: #F5FEBB;
+        }
+
+        /* Retention Page Styles */
+        .retention-container {
+            min-height: 100vh;
+            background: linear-gradient(135deg, var(--cream) 0%, var(--sky-blue) 100%);
+        }
+
+        .page-header {
+            background: linear-gradient(135deg, var(--navy) 0%, var(--teal) 100%);
+            color: var(--white);
+            padding: 3rem 0;
+            text-align: center;
+        }
+
+        .page-header h1 {
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 1rem;
+        }
+
+        .page-header p {
+            font-size: 1.1rem;
+            opacity: 0.9;
+            max-width: 600px;
+            margin: 0 auto;
+            color: #C8D9EE;
+        }
+
+        .main-content {
+            padding: 2rem 0;
+        }
+
+        .section-title {
+            font-size: 1.8rem;
+            color: var(--navy);
+            margin-bottom: 2rem;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        /* Overview Cards */
+        .overview-cards {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 1.5rem;
+            margin-bottom: 3rem;
+        }
+
+        .overview-card {
+            background: var(--cream);
+            padding: 1.5rem;
+            border-radius: 10px;
+            box-shadow: 0 2px 10px rgba(47, 65, 86, 0.1);
+            border: 1px solid var(--sky-blue);
+            transition: transform 0.3s ease;
+        }
+
+        .overview-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 20px rgba(86, 124, 141, 0.1);
+        }
+
+        .overview-card h3 {
+            color: var(--navy);
+            margin-bottom: 1rem;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .overview-value {
+            font-size: 2rem;
+            font-weight: bold;
+            margin: 1rem 0;
+        }
+
+        .value-high {
+            color: #f56565;
+        }
+
+        .value-medium {
+            color: #ed8936;
+        }
+
+        .value-low {
+            color: var(--teal);
+        }
+
+        /* Strategy Cards */
+        .strategy-section {
+            margin-bottom: 3rem;
+        }
+
+        .strategy-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 1.5rem;
+        }
+
+        .strategy-card {
+            background: var(--cream);
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 2px 10px rgba(47, 65, 86, 0.1);
+            transition: transform 0.3s;
+            border: 1px solid var(--sky-blue);
+        }
+
+        .strategy-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 20px rgba(86, 124, 141, 0.1);
+        }
+
+        .strategy-header {
+            padding: 1.5rem;
+            color: var(--white);
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+
+        .strategy-priority {
+            background: rgba(255, 255, 255, 0.2);
+            padding: 0.3rem 0.8rem;
+            border-radius: 50px;
+            font-size: 0.9rem;
+        }
+
+        .strategy-body {
+            padding: 1.5rem;
+        }
+
+        .strategy-body h4 {
+            color: var(--navy);
+            margin-bottom: 1rem;
+        }
+
+        .strategy-list {
+            list-style: none;
+            padding: 0;
+            margin: 1rem 0;
+        }
+
+        .strategy-list li {
+            padding: 0.5rem 0;
+            border-bottom: 1px solid rgba(200, 217, 230, 0.5);
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .strategy-list li:last-child {
+            border-bottom: none;
+        }
+
+        .strategy-impact {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            margin-top: 1rem;
+            padding-top: 1rem;
+            border-top: 1px solid rgba(200, 217, 230, 0.5);
+        }
+
+        .impact-label {
+            color: var(--teal);
+            font-size: 0.9rem;
+        }
+
+        .impact-value {
+            font-weight: bold;
+            color: var(--navy);
+        }
+
+        /* Customer Segments */
+        .segments-section {
+            background: var(--cream);
+            padding: 2rem;
+            border-radius: 10px;
+            box-shadow: 0 2px 10px rgba(47, 65, 86, 0.1);
+            margin-bottom: 3rem;
+            border: 1px solid var(--sky-blue);
+        }
+
+        .segment-tabs {
+            display: flex;
+            gap: 0.5rem;
+            margin-bottom: 2rem;
+            flex-wrap: wrap;
+        }
+
+        .segment-tab {
+            padding: 0.8rem 1.5rem;
+            background: rgba(200, 217, 230, 0.3);
+            border: 1px solid var(--teal);
+            border-radius: 6px;
+            cursor: pointer;
+            font-weight: 500;
+            color: var(--navy);
+            transition: all 0.3s;
+        }
+
+        .segment-tab:hover {
+            background: rgba(86, 124, 141, 0.1);
+        }
+
+        .segment-tab.active {
+            background: var(--navy);
+            color: var(--white);
+            border-color: var(--navy);
+        }
+
+        .segment-content {
+            display: none;
+            animation: fadeIn 0.5s ease;
+        }
+
+        .segment-content.active {
+            display: block;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+
+        .segment-strategies {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 1rem;
+            margin-top: 1.5rem;
+        }
+
+        .segment-strategy {
+            background: rgba(200, 217, 230, 0.2);
+            padding: 1rem;
+            border-radius: 8px;
+            border-left: 4px solid var(--teal);
+            transition: all 0.3s;
+        }
+
+        .segment-strategy:hover {
+            background: rgba(86, 124, 141, 0.1);
+            transform: translateX(5px);
+        }
+
+        /* Action Plan */
+        .action-plan {
+            background: var(--cream);
+            padding: 2rem;
+            border-radius: 10px;
+            box-shadow: 0 2px 10px rgba(47, 65, 86, 0.1);
+            margin-bottom: 3rem;
+            border: 1px solid var(--sky-blue);
+        }
+
+        .timeline {
+            position: relative;
+            margin: 2rem 0;
+            padding-left: 2rem;
+        }
+
+        .timeline::before {
+            content: '';
+            position: absolute;
+            left: 10px;
+            top: 0;
+            bottom: 0;
+            width: 2px;
+            background: var(--sky-blue);
+        }
+
+        .timeline-item {
+            position: relative;
+            margin-bottom: 2rem;
+            padding-bottom: 2rem;
+            border-bottom: 1px solid rgba(200, 217, 230, 0.5);
+        }
+
+        .timeline-item:last-child {
+            margin-bottom: 0;
+            padding-bottom: 0;
+            border-bottom: none;
+        }
+
+        .timeline-item::before {
+            content: '';
+            position: absolute;
+            left: -1.4rem;
+            top: 0;
+            width: 12px;
+            height: 12px;
+            border-radius: 50%;
+            background: var(--teal);
+            border: 3px solid var(--cream);
+            box-shadow: 0 0 0 3px var(--teal);
+        }
+
+        .timeline-date {
+            font-weight: bold;
+            color: var(--teal);
+            margin-bottom: 0.5rem;
+        }
+
+        .timeline-content h4 {
+            color: var(--navy);
+            margin-bottom: 0.5rem;
+        }
+
+        /* ROI Calculator */
+        .roi-calculator {
+            background: rgba(200, 217, 230, 0.2);
+            padding: 2rem;
+            border-radius: 10px;
+            margin-bottom: 3rem;
+            border: 1px solid var(--teal);
+        }
+
+        .calculator-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 1.5rem;
+            margin: 2rem 0;
+        }
+
+        .calculator-input {
+            display: flex;
+            flex-direction: column;
+            gap: 0.5rem;
+        }
+
+        .calculator-input label {
+            font-weight: 500;
+            color: var(--navy);
+        }
+
+        .calculator-input input {
+            padding: 0.8rem;
+            border: 2px solid rgba(200, 217, 230, 0.8);
+            border-radius: 6px;
+            font-size: 1rem;
+            background: var(--cream);
+            transition: all 0.3s;
+        }
+
+        .calculator-input input:focus {
+            outline: none;
+            border-color: var(--teal);
+            box-shadow: 0 0 0 3px rgba(86, 124, 141, 0.1);
+        }
+
+        .roi-results {
+            background: var(--cream);
+            padding: 1.5rem;
+            border-radius: 8px;
+            margin-top: 2rem;
+            display: none;
+            border: 1px solid var(--sky-blue);
+            animation: fadeIn 0.5s ease;
+        }
+
+        .roi-results.show {
+            display: block;
+        }
+
+        .roi-value {
+            font-size: 2rem;
+            font-weight: bold;
+            color: var(--teal);
+            margin: 1rem 0;
+        }
+
+        /* Implementation Tools */
+        .tools-section {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 1.5rem;
+            margin-bottom: 3rem;
+        }
+
+        .tool-card {
+            background: var(--cream);
+            padding: 1.5rem;
+            border-radius: 10px;
+            box-shadow: 0 2px 10px rgba(47, 65, 86, 0.1);
+            text-align: center;
+            border: 1px solid var(--sky-blue);
+            transition: all 0.3s;
+        }
+
+        .tool-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 20px rgba(86, 124, 141, 0.1);
+        }
+
+        .tool-icon {
+            font-size: 3rem;
+            color: var(--teal);
+            margin-bottom: 1rem;
+        }
+
+        /* Strategy Playbook Modal */
+        .modal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0,0,0,0.5);
+            z-index: 9999;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .modal-content {
+            background: var(--cream);
+            width: 90%;
+            max-width: 800px;
+            max-height: 85vh;
+            border-radius: 15px;
+            overflow: hidden;
+            animation: slideUp 0.3s ease;
+            border: 1px solid var(--sky-blue);
+        }
+
+        .modal-header {
+            background: linear-gradient(135deg, var(--navy) 0%, var(--teal) 100%);
+            color: var(--white);
+            padding: 1.5rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .modal-header h2 {
+            margin: 0;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .modal-close {
+            background: none;
+            border: none;
+            color: var(--white);
+            font-size: 1.5rem;
+            cursor: pointer;
+        }
+
+        .modal-body {
+            padding: 1.5rem;
+            overflow-y: auto;
+            max-height: calc(85vh - 80px);
+        }
+
+        .playbook-section {
+            margin-bottom: 1.5rem;
+            padding-bottom: 1rem;
+            border-bottom: 1px solid var(--sky-blue);
+        }
+
+        .playbook-section h3 {
+            color: var(--navy);
+            margin-bottom: 0.8rem;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .playbook-section ul, .playbook-section ol {
+            padding-left: 1.5rem;
+            color: var(--teal);
+            line-height: 1.8;
+        }
+
+        .playbook-section li {
+            margin: 0.5rem 0;
+        }
+
+        .playbook-tip {
+            background: rgba(86, 124, 141, 0.1);
+            padding: 1rem;
+            border-radius: 8px;
+            margin: 1rem 0;
+            border-left: 4px solid var(--teal);
+        }
+
+        /* Export Section */
+        .export-section {
+            text-align: center;
+            padding: 2rem;
+            background: var(--cream);
+            border-radius: 10px;
+            box-shadow: 0 2px 10px rgba(47, 65, 86, 0.1);
+            border: 1px solid var(--sky-blue);
+        }
+
+        .btn-group {
+            display: flex;
+            gap: 1rem;
+            justify-content: center;
+            flex-wrap: wrap;
+            margin-top: 1.5rem;
+        }
+
+        .btn {
+            padding: 0.8rem 1.5rem;
+            border-radius: 6px;
+            text-decoration: none;
+            font-weight: 500;
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            transition: all 0.3s;
+            border: none;
+            cursor: pointer;
+            font-size: 0.9rem;
+        }
+
+        .btn-primary {
+            background: linear-gradient(135deg, var(--teal) 0%, var(--navy) 100%);
+            color: var(--white);
+        }
+
+        .btn-secondary {
+            background: rgba(200, 217, 230, 0.3);
+            color: var(--navy);
+            border: 1px solid var(--teal);
+        }
+
+        .btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(86, 124, 141, 0.3);
+        }
+
+        .btn-primary:hover {
+            background: linear-gradient(135deg, var(--navy) 0%, var(--teal) 100%);
+        }
+
+        .btn-secondary:hover {
+            background: rgba(86, 124, 141, 0.1);
+            border-color: var(--navy);
+        }
+
+        /* Additional styling for specific elements */
+        .overview-card p, .strategy-body p, .segment-content p {
+            color: var(--navy);
+            opacity: 0.8;
+            line-height: 1.6;
+        }
+
+        .strategy-list li i {
+            color: var(--teal);
+        }
+
+        .segment-strategy h4 {
+            color: var(--navy);
+            margin-bottom: 0.5rem;
+        }
+
+        .segment-strategy p {
+            color: var(--teal);
+            font-size: 0.9rem;
+        }
+
+        .timeline-content ul {
+            list-style: none;
+            padding: 0;
+            margin: 0.5rem 0;
+        }
+
+        .timeline-content li {
+            padding: 0.3rem 0;
+            color: var(--navy);
+            opacity: 0.8;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .timeline-content li:before {
+            content: '•';
+            color: var(--teal);
+            font-weight: bold;
+        }
+
+        /* Navigation */
+        .navbar {
+            background: var(--navy);
+            color: var(--white);
+        }
+
+        /* Footer */
+        footer {
+            background: var(--navy);
+            color: var(--white);
+            padding: 2rem 0;
+        }
+
+        .footer-links a {
+            color: var(--sky-blue);
+            text-decoration: none;
+            transition: color 0.3s;
+        }
+
+        .footer-links a:hover {
+            color: var(--white);
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .page-header h1 {
+                font-size: 2rem;
+                flex-direction: column;
+                gap: 0.5rem;
+            }
+            
+            .page-header p {
+                font-size: 1rem;
+                padding: 0 1rem;
+            }
+            
+            .section-title {
+                font-size: 1.5rem;
+            }
+            
+            .overview-cards,
+            .strategy-grid,
+            .segment-strategies,
+            .tools-section {
+                grid-template-columns: 1fr;
+            }
+            
+            .segment-tabs {
+                flex-direction: column;
+            }
+            
+            .segment-tab {
+                width: 100%;
+                text-align: center;
+            }
+            
+            .btn-group {
+                flex-direction: column;
+            }
+            
+            .btn {
+                width: 100%;
+                justify-content: center;
+            }
+            
+            .calculator-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .modal-content {
+                width: 95%;
+                margin: 1rem;
+            }
+        }
+
+        /* Animation for cards */
+        @keyframes slideUp {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .strategy-card,
+        .overview-card,
+        .tool-card {
+            animation: slideUp 0.6s ease-out;
+        }
+
+        /* Staggered animations */
+        .overview-card:nth-child(1) { animation-delay: 0.1s; }
+        .overview-card:nth-child(2) { animation-delay: 0.2s; }
+        .overview-card:nth-child(3) { animation-delay: 0.3s; }
+        
+        .strategy-card:nth-child(1) { animation-delay: 0.2s; }
+        .strategy-card:nth-child(2) { animation-delay: 0.3s; }
+        .strategy-card:nth-child(3) { animation-delay: 0.4s; }
+    </style>
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="navbar">
+        <div class="container">
+            <a href="index.html" class="logo">
+                <i class="fas fa-chart-line"></i>
+                <span>RetainX</span>
+            </a>
+
+            <button class="menu-toggle" id="menuToggle">
+                <i class="fas fa-bars"></i>
+            </button>
+
+            <ul class="nav-links" id="navLinks">
+                <li><a href="index.html">Home</a></li>
+                <li><a href="dashboard.html">Dashboard</a></li>
+                <li><a href="data-input.html">Data Input</a></li>
+                <li><a href="analysis.html">Analytics</a></li>
+                <li><a href="reports.html">Reports</a></li>
+                <li><a href="model-performance.html">Model</a></li>
+                <li><a href="retention.html">Retention</a></li>
+                <li class="user-dropdown" id="userDropdown">
+                    <button class="user-dropdown-btn" id="userDropdownBtn">
+                        <i class="fas fa-user-circle"></i>
+                        <span id="userNameNav">Account</span>
+                        <i class="fas fa-chevron-down"></i>
+                    </button>
+                    <div class="user-dropdown-content" id="userDropdownContent">
+                        <div class="user-info">
+                            <div class="user-avatar-dropdown">
+                                <i class="fas fa-user"></i>
+                            </div>
+                            <div class="user-name-dropdown" id="dropdownUserName">User</div>
+                            <div class="user-email-dropdown" id="dropdownUserEmail">user@example.com</div>
+                        </div>
+                        <div class="dropdown-divider"></div>
+                        <div class="dropdown-item logout" id="logoutDropdownBtn">
+                            <i class="fas fa-sign-out-alt"></i>
+                            <span>Logout</span>
+                        </div>
+                    </div>
+                </li>
+            </ul>
+        </div>
+    </nav>
+
+    <div class="retention-container">
+        <!-- Page Header -->
+        <div class="page-header">
+            <div class="container">
+                <h1><i class="fas fa-lightbulb"></i> AI-Powered Retention Strategies</h1>
+                <p>Personalized strategies to reduce churn and increase customer loyalty</p>
+            </div>
+        </div>
+
+        <div class="container main-content">
+           
+
+            <!-- Customer Segment Strategies -->
+            <div class="segments-section">
+                <h2 class="section-title"><i class="fas fa-users"></i> Segment-Specific Strategies</h2>
+                
+                <div class="segment-tabs">
+                    <button class="segment-tab active" data-segment="young">Young Adults (18-25)</button>
+                    <button class="segment-tab" data-segment="professionals">Professionals (26-40)</button>
+                    <button class="segment-tab" data-segment="family">Family Users (35+)</button>
+                    <button class="segment-tab" data-segment="students">Students</button>
+                </div>
+
+                <div id="segment-young" class="segment-content active">
+                    <h3>Young Adults Strategy</h3>
+                    <p>Price-sensitive, frequent platform switchers, high mobile usage</p>
+                    <div class="segment-strategies">
+                        <div class="segment-strategy">
+                            <h4>📱 Mobile-First Approach</h4>
+                            <p>Optimize mobile experience, push notifications, mobile-exclusive content</p>
+                        </div>
+                        <div class="segment-strategy">
+                            <h4>🎯 Social Integration</h4>
+                            <p>Share watch history, create viewing parties, social media integration</p>
+                        </div>
+                        <div class="segment-strategy">
+                            <h4>💰 Flexible Pricing</h4>
+                            <p>Student discounts, pay-per-view options, shorter subscription cycles</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div id="segment-professionals" class="segment-content">
+                    <h3>Professionals Strategy</h3>
+                    <p>High income, limited time, prefer quality content, multi-device usage</p>
+                    <div class="segment-strategies">
+                        <div class="segment-strategy">
+                            <h4>⏱️ Time-Saving Features</h4>
+                            <p>Download for offline, quick previews, personalized recommendations</p>
+                        </div>
+                        <div class="segment-strategy">
+                            <h4>🎬 Premium Content</h4>
+                            <p>Exclusive releases, early access, ad-free experience</p>
+                        </div>
+                        <div class="segment-strategy">
+                            <h4>💼 Multi-Device Sync</h4>
+                            <p>Seamless transition between devices, family sharing options</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div id="segment-family" class="segment-content">
+                    <h3>Family Users Strategy</h3>
+                    <p>Multiple users, diverse content needs, value-oriented, long-term focus</p>
+                    <div class="segment-strategies">
+                        <div class="segment-strategy">
+                            <h4>👨‍👩‍👧‍👦 Family Plans</h4>
+                            <p>Multiple profiles, parental controls, simultaneous streaming</p>
+                        </div>
+                        <div class="segment-strategy">
+                            <h4>🎭 Diverse Content Library</h4>
+                            <p>Kids content, regional languages, educational content</p>
+                        </div>
+                        <div class="segment-strategy">
+                            <h4>📺 Group Features</h4>
+                            <p>Family watch parties, shared recommendations, group discounts</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div id="segment-students" class="segment-content">
+                    <h3>Students Strategy</h3>
+                    <p>Budget-constrained, seasonal usage, social influencers</p>
+                    <div class="segment-strategies">
+                        <div class="segment-strategy">
+                            <h4>🎓 Student Discounts</h4>
+                            <p>Verified student pricing, semester-based subscriptions</p>
+                        </div>
+                        <div class="segment-strategy">
+                            <h4>📚 Educational Content</h4>
+                            <p>Documentaries, educational series, skill-building content</p>
+                        </div>
+                        <div class="segment-strategy">
+                            <h4>👥 Referral Programs</h4>
+                            <p>Group discounts, referral bonuses, campus ambassador programs</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Implementation Timeline -->
+            <div class="action-plan">
+                <h2 class="section-title"><i class="fas fa-calendar-alt"></i> 30-Day Action Plan</h2>
+                
+                <div class="timeline">
+                    <div class="timeline-item">
+                        <div class="timeline-date">Week 1: Immediate Actions</div>
+                        <div class="timeline-content">
+                            <h4>High-Risk Customer Intervention</h4>
+                            <p>Identify top 100 high-risk customers and deploy emergency retention offers</p>
+                            <ul>
+                                <li>Personalized discount offers</li>
+                                <li>Direct communication from customer success team</li>
+                                <li>Priority support access</li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="timeline-item">
+                        <div class="timeline-date">Week 2-3: Strategy Implementation</div>
+                        <div class="timeline-content">
+                            <h4>Segment-Specific Campaigns</h4>
+                            <p>Roll out targeted campaigns for each customer segment</p>
+                            <ul>
+                                <li>Launch student discount program</li>
+                                <li>Implement family plan enhancements</li>
+                                <li>Deploy re-engagement email sequences</li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="timeline-item">
+                        <div class="timeline-date">Week 4: Optimization & Analysis</div>
+                        <div class="timeline-content">
+                            <h4>Performance Review & Optimization</h4>
+                            <p>Analyze campaign performance and optimize strategies</p>
+                            <ul>
+                                <li>Measure campaign ROI</li>
+                                <li>Identify top-performing strategies</li>
+                                <li>Plan next month's retention initiatives</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+         
+            <!-- Implementation Tools -->
+            <h2 class="section-title"><i class="fas fa-tools"></i> Implementation Tools</h2>
+            <div class="tools-section">
+                <div class="tool-card">
+                    <div class="tool-icon">
+                        <i class="fas fa-book-open"></i>
+                    </div>
+                    <h3>Strategy Playbook</h3>
+                    <p>Step-by-step guide for implementing retention strategies</p>
+                    <button class="btn btn-secondary" style="margin-top: 1rem;" onclick="openPlaybook()">
+                        <i class="fas fa-book-open"></i> View Playbook
+                    </button>
+                </div>
+                <div class="tool-card">
+                    <div class="tool-icon">
+                        <i class="fas fa-chart-bar"></i>
+                    </div>
+                    <h3>Performance Dashboard</h3>
+                    <p>Track retention campaign performance metrics</p>
+                    <button class="btn btn-secondary" style="margin-top: 1rem;" onclick="window.location.href='dashboard.html'">
+                        <i class="fas fa-external-link-alt"></i> Open Dashboard
+                    </button>
+                </div>
+            </div>
+
+          
+
+    <!-- Strategy Playbook Modal -->
+    <div id="playbookModal" class="modal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h2><i class="fas fa-book-open"></i> Retention Strategy Playbook</h2>
+                <button class="modal-close" onclick="closePlaybook()">&times;</button>
+            </div>
+            <div class="modal-body">
+                <div class="playbook-section">
+                    <h3><i class="fas fa-bullseye"></i> 1. Identify High-Risk Customers</h3>
+                    <ul>
+                        <li>Login to RetainX Dashboard and go to Analytics section</li>
+                        <li>Filter customers with churn probability > 70%</li>
+                        <li>Export the list of high-risk customers</li>
+                        <li>Segment them by age group, plan type, and satisfaction score</li>
+                    </ul>
+                    <div class="playbook-tip">
+                        <strong>💡 Pro Tip:</strong> Focus on customers with both high churn probability AND high lifetime value first.
+                    </div>
+                </div>
+
+                <div class="playbook-section">
+                    <h3><i class="fas fa-gift"></i> 2. Deploy Personalized Offers</h3>
+                    <ul>
+                        <li>For Price-Sensitive customers: Offer 20-30% discount on next billing cycle</li>
+                        <li>For Content-Dissatisfied users: Send personalized content recommendations</li>
+                        <li>For Infrequent users: "We miss you" campaign with exclusive preview</li>
+                        <li>For Students: Verify student ID and offer semester-based pricing</li>
+                    </ul>
+                    <div class="playbook-tip">
+                        <strong>💡 Pro Tip:</strong> Use A/B testing to find which offer works best for each segment.
+                    </div>
+                </div>
+
+                <div class="playbook-section">
+                    <h3><i class="fas fa-envelope"></i> 3. Execute Communication Campaigns</h3>
+                    <ul>
+                        <li><strong>Week 1:</strong> Send personalized email/SMS to high-risk customers</li>
+                        <li><strong>Week 2:</strong> Follow up with satisfaction survey</li>
+                        <li><strong>Week 3:</strong> Share success stories and new features</li>
+                        <li><strong>Week 4:</strong> Offer loyalty rewards for continued subscription</li>
+                    </ul>
+                    <div class="playbook-tip">
+                        <strong>💡 Pro Tip:</strong> Use different communication channels based on customer preference.
+                    </div>
+                </div>
+
+                <div class="playbook-section">
+                    <h3><i class="fas fa-chart-line"></i> 4. Track & Measure Results</h3>
+                    <ul>
+                        <li>Monitor churn rate weekly using Dashboard analytics</li>
+                        <li>Track which offers have highest redemption rate</li>
+                        <li>Calculate ROI using the ROI Calculator in Retention page</li>
+                        <li>Review customer feedback and satisfaction scores</li>
+                    </ul>
+                    <div class="playbook-tip">
+                        <strong>💡 Pro Tip:</strong> Aim for at least 40% retention rate among targeted high-risk customers.
+                    </div>
+                </div>
+
+                <div class="playbook-section">
+                    <h3><i class="fas fa-sync-alt"></i> 5. Optimize & Repeat</h3>
+                    <ul>
+                        <li>Analyze which strategies performed best</li>
+                        <li>Update customer segments based on new behavior data</li>
+                        <li>Schedule monthly retention campaigns</li>
+                        <li>Continuously monitor and adjust offers based on performance</li>
+                    </ul>
+                    <div class="playbook-tip">
+                        <strong>💡 Pro Tip:</strong> Run retention campaigns monthly, not just when churn risk is high.
+                    </div>
+                </div>
+
+                <div class="playbook-section">
+                    <h3><i class="fas fa-chart-simple"></i> Sample Campaign Timeline</h3>
+                    <ul>
+                        <li><strong>Day 1:</strong> Identify high-risk customers via Analytics page</li>
+                        <li><strong>Day 2-3:</strong> Send personalized offer emails</li>
+                        <li><strong>Day 5:</strong> Follow up SMS reminder</li>
+                        <li><strong>Day 7:</strong> Track response and redemption rates</li>
+                        <li><strong>Day 10:</strong> Send satisfaction survey to non-responders</li>
+                        <li><strong>Day 14:</strong> Analyze results and plan next campaign</li>
+                    </ul>
+                </div>
+
+                <div class="playbook-section">
+                    <h3><i class="fas fa-question-circle"></i> FAQ</h3>
+                    <ul>
+                        <li><strong>Q: How often should I run retention campaigns?</strong><br>A: Monthly for high-risk customers, quarterly for all customers.</li>
+                        <li><strong>Q: What discount works best?</strong><br>A: 25% off next month shows best conversion rate (avg 35% redemption).</li>
+                        <li><strong>Q: How to measure success?</strong><br>A: Track churn rate reduction and campaign ROI using the calculator.</li>
+                        <li><strong>Q: What if customer still churns?</strong><br>A: Send exit survey to understand reason and improve future strategies.</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-logo">
+                    <span style="font-weight: 700; font-size: 1.2rem;">RetainX</span>
+                </div>
+                <div class="footer-links">
+                    <a href="index.html">Home</a>
+                    <a href="dashboard.html">Dashboard</a>
+                    <a href="data-input.html">Data Input</a>
+                    <a href="analysis.html">Analytics</a>
+                    <a href="retention.html">Retention</a>
+                </div>
+                <div class="footer-info">
+                    <p>Academic Project | OTT Platform Customer Churn Analysis</p>
+                    <p>© 2024 RetainX. All rights reserved.</p>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- JavaScript -->
+    <script>
+        // Initialize Retention Page
+        document.addEventListener('DOMContentLoaded', function() {
+            console.log('Retention page loaded');
+            
+            // Mobile menu toggle
+            const menuToggle = document.getElementById('menuToggle');
+            const navLinks = document.getElementById('navLinks');
+            
+            if (menuToggle && navLinks) {
+                menuToggle.addEventListener('click', function() {
+                    navLinks.classList.toggle('active');
+                });
+                
+                document.addEventListener('click', function(event) {
+                    if (!event.target.closest('.navbar')) {
+                        navLinks.classList.remove('active');
+                    }
+                });
+            }
+            
+            // Update auth link based on login status
+            updateAuthLink();
+            
+            // Segment tabs functionality
+            initializeSegmentTabs();
+            
+            // ROI Calculator
+            const calculateBtn = document.getElementById('calculateROI');
+            if (calculateBtn) {
+                calculateBtn.addEventListener('click', calculateROI);
+                calculateROI();
+            }
+            
+            initializeExportButtons();
+        });
+        
+        // Update authentication link
+        function updateAuthLink() {
+            const authLink = document.getElementById('authLink');
+            if (authLink) {
+                const isAuthenticated = localStorage.getItem('isAuthenticated') === 'true';
+                if (isAuthenticated) {
+                    const user = JSON.parse(localStorage.getItem('user') || '{}');
+                    authLink.innerHTML = `<i class="fas fa-user-circle"></i> <span>${user.name || 'User'}</span>`;
+                    authLink.href = '#';
+                    
+                    authLink.addEventListener('click', function(e) {
+                        e.preventDefault();
+                        const confirmLogout = confirm('Are you sure you want to logout?');
+                        if (confirmLogout) {
+                            localStorage.removeItem('isAuthenticated');
+                            localStorage.removeItem('user');
+                            window.location.href = 'login.html';
+                        }
+                    });
+                } else {
+                    authLink.innerHTML = '<i class="fas fa-sign-in-alt"></i> <span>Login</span>';
+                    authLink.href = 'login.html';
+                }
+            }
+        }
+        
+        // Initialize segment tabs
+        function initializeSegmentTabs() {
+            const segmentTabs = document.querySelectorAll('.segment-tab');
+            segmentTabs.forEach(tab => {
+                tab.addEventListener('click', function() {
+                    const segment = this.getAttribute('data-segment');
+                    segmentTabs.forEach(t => t.classList.remove('active'));
+                    this.classList.add('active');
+                    document.querySelectorAll('.segment-content').forEach(content => {
+                        content.classList.remove('active');
+                    });
+                    document.getElementById(`segment-${segment}`).classList.add('active');
+                });
+            });
+        }
+        
+        // ROI Calculation function
+        function calculateROI() {
+            const atRiskCustomers = parseInt(document.getElementById('atRiskCustomers').value) || 0;
+            const avgRevenue = parseInt(document.getElementById('avgRevenue').value) || 0;
+            const retentionRate = parseInt(document.getElementById('retentionRate').value) || 0;
+            const implementationCost = parseInt(document.getElementById('implementationCost').value) || 0;
+            
+            if (atRiskCustomers < 0 || avgRevenue < 0 || retentionRate < 0 || retentionRate > 100 || implementationCost < 0) {
+                showNotification('Please enter valid values for all fields', 'error');
+                return;
+            }
+            
+            const revenueAtRisk = atRiskCustomers * avgRevenue;
+            const retentionRateDecimal = retentionRate / 100;
+            const customersRetained = Math.floor(atRiskCustomers * retentionRateDecimal);
+            const revenueSaved = customersRetained * avgRevenue;
+            const netGain = revenueSaved - implementationCost;
+            const roiPercentage = implementationCost > 0 ? Math.round((netGain / implementationCost) * 100) : 0;
+            
+            const formatter = new Intl.NumberFormat('en-IN', {
+                style: 'currency',
+                currency: 'INR',
+                minimumFractionDigits: 0,
+                maximumFractionDigits: 0
+            });
+            
+            document.getElementById('revenueAtRisk').textContent = formatter.format(revenueAtRisk);
+            document.getElementById('revenueSaved').textContent = formatter.format(revenueSaved);
+            document.getElementById('netGain').textContent = formatter.format(netGain);
+            document.getElementById('roiPercentage').textContent = `${roiPercentage}%`;
+            document.getElementById('roiValue').textContent = formatter.format(revenueSaved);
+            document.getElementById('roiResults').classList.add('show');
+            
+            const roiElement = document.getElementById('roiPercentage');
+            const netGainElement = document.getElementById('netGain');
+            
+            if (roiPercentage > 200) {
+                roiElement.style.color = 'var(--teal)';
+                netGainElement.style.color = 'var(--teal)';
+            } else if (roiPercentage > 100) {
+                roiElement.style.color = '#ed8936';
+                netGainElement.style.color = '#ed8936';
+            } else if (roiPercentage > 0) {
+                roiElement.style.color = '#f56565';
+                netGainElement.style.color = '#f56565';
+            } else {
+                roiElement.style.color = '#f56565';
+                netGainElement.style.color = '#f56565';
+            }
+            
+            if (roiPercentage > 100) {
+                showNotification(`Excellent ROI of ${roiPercentage}%!`, 'success');
+            }
+        }
+        
+        // Playbook Functions
+        function openPlaybook() {
+            document.getElementById('playbookModal').style.display = 'flex';
+        }
+        
+        function closePlaybook() {
+            document.getElementById('playbookModal').style.display = 'none';
+        }
+        
+        // Export functions
+        function initializeExportButtons() {
+            document.querySelectorAll('.btn-primary, .btn-secondary').forEach(btn => {
+                btn.addEventListener('click', function(e) {
+                    if (this.textContent.includes('Download') || this.textContent.includes('Print')) {
+                        e.preventDefault();
+                        const action = this.textContent;
+                        showNotification(`Preparing ${action.toLowerCase()}...`, 'info');
+                    }
+                });
+            });
+        }
+        
+        function exportPDF() {
+            showNotification('Generating PDF document...', 'info');
+            setTimeout(() => {
+                showNotification('PDF document ready for download!', 'success');
+            }, 1500);
+        }
+        
+        function exportExcel() {
+            showNotification('Generating Excel spreadsheet...', 'info');
+            setTimeout(() => {
+                showNotification('Excel spreadsheet ready for download!', 'success');
+            }, 1500);
+        }
+        
+        function exportPPT() {
+            showNotification('Creating PowerPoint presentation...', 'info');
+            setTimeout(() => {
+                showNotification('Presentation deck ready for download!', 'success');
+            }, 1500);
+        }
+        
+        function printSummary() {
+            showNotification('Opening print preview...', 'info');
+            setTimeout(() => {
+                window.print();
+            }, 500);
+        }
+        
+        function downloadTemplate(type) {
+            const templateNames = {
+                'email': 'Email Campaign Templates',
+                'dashboard': 'Performance Dashboard',
+                'playbook': 'Strategy Playbook'
+            };
+            showNotification(`Downloading ${templateNames[type]}...`, 'info');
+            setTimeout(() => {
+                showNotification(`${templateNames[type]} downloaded successfully!`, 'success');
+            }, 1000);
+        }
+        
+        function viewPlaybook() {
+            openPlaybook();
+        }
+        
+        // Show notification
+        function showNotification(message, type = 'info') {
+            document.querySelectorAll('.notification').forEach(n => n.remove());
+            
+            const notification = document.createElement('div');
+            notification.className = `notification notification-${type}`;
+            notification.innerHTML = `
+                <div class="notification-content">
+                    <i class="fas fa-${type === 'success' ? 'check-circle' : type === 'error' ? 'exclamation-circle' : 'info-circle'}"></i>
+                    <span>${message}</span>
+                </div>
+                <button class="notification-close">&times;</button>
+            `;
+            
+            if (!document.querySelector('#notification-styles')) {
+                const styles = document.createElement('style');
+                styles.id = 'notification-styles';
+                styles.textContent = `
+                    .notification {
+                        position: fixed;
+                        top: 20px;
+                        right: 20px;
+                        background: var(--cream);
+                        padding: 1rem 1.5rem;
+                        border-radius: 8px;
+                        box-shadow: 0 5px 15px rgba(47, 65, 86, 0.1);
+                        display: flex;
+                        align-items: center;
+                        justify-content: space-between;
+                        gap: 1rem;
+                        z-index: 9999;
+                        animation: slideIn 0.3s ease-out;
+                        max-width: 400px;
+                        border-left: 4px solid var(--teal);
+                        border: 1px solid var(--sky-blue);
+                    }
+                    .notification-success { border-left-color: #48bb78; }
+                    .notification-error { border-left-color: #f56565; }
+                    .notification-info { border-left-color: var(--teal); }
+                    .notification-content { display: flex; align-items: center; gap: 0.5rem; }
+                    .notification-content i { font-size: 1.2rem; }
+                    .notification-success .notification-content i { color: #48bb78; }
+                    .notification-error .notification-content i { color: #f56565; }
+                    .notification-info .notification-content i { color: var(--teal); }
+                    .notification-close { background: none; border: none; font-size: 1.5rem; cursor: pointer; color: var(--teal); line-height: 1; padding: 0; }
+                    @keyframes slideIn {
+                        from { transform: translateX(100%); opacity: 0; }
+                        to { transform: translateX(0); opacity: 1; }
+                    }
+                `;
+                document.head.appendChild(styles);
+            }
+            
+            document.body.appendChild(notification);
+            
+            notification.querySelector('.notification-close').addEventListener('click', () => {
+                notification.style.animation = 'slideIn 0.3s ease-out reverse';
+                setTimeout(() => notification.remove(), 300);
+            });
+            
+            setTimeout(() => {
+                if (notification.parentNode) {
+                    notification.style.animation = 'slideIn 0.3s ease-out reverse';
+                    setTimeout(() => notification.remove(), 300);
+                }
+            }, 3000);
+        }
+    </script>
+    <script>
+        // User Dropdown Functionality
+        const userDropdownBtn = document.getElementById('userDropdownBtn');
+        const userDropdownContent = document.getElementById('userDropdownContent');
+        
+        if (userDropdownBtn && userDropdownContent) {
+            userDropdownBtn.addEventListener('click', function(e) {
+                e.stopPropagation();
+                userDropdownContent.classList.toggle('show');
+            });
+            
+            document.addEventListener('click', function(e) {
+                if (!userDropdownBtn.contains(e.target) && !userDropdownContent.contains(e.target)) {
+                    userDropdownContent.classList.remove('show');
+                }
+            });
+        }
+        
+        const token = localStorage.getItem('authToken');
+        const user = localStorage.getItem('user');
+        
+        if (token && user) {
+            try {
+                const userData = JSON.parse(user);
+                const userNameNav = document.getElementById('userNameNav');
+                const dropdownUserName = document.getElementById('dropdownUserName');
+                const dropdownUserEmail = document.getElementById('dropdownUserEmail');
+                
+                if (userNameNav) userNameNav.textContent = userData.name || 'User';
+                if (dropdownUserName) dropdownUserName.textContent = userData.name || 'User';
+                if (dropdownUserEmail) dropdownUserEmail.textContent = userData.email || 'user@example.com';
+            } catch(e) {}
+        }
+        
+        const logoutBtn = document.getElementById('logoutDropdownBtn');
+        if (logoutBtn) {
+            logoutBtn.addEventListener('click', function() {
+                localStorage.removeItem('authToken');
+                localStorage.removeItem('user');
+                localStorage.removeItem('isAuthenticated');
+                window.location.href = 'login.html';
+            });
+        }
+        
+        const menuToggle = document.getElementById('menuToggle');
+        const navLinks = document.getElementById('navLinks');
+        if (menuToggle && navLinks) {
+            menuToggle.addEventListener('click', function() {
+                navLinks.classList.toggle('active');
+            });
+        }
+        
+        const currentPage = window.location.pathname.split('/').pop();
+        const navLinkItems = document.querySelectorAll('.nav-links a');
+        navLinkItems.forEach(link => {
+            const linkHref = link.getAttribute('href');
+            if (linkHref === currentPage || (currentPage === '' && linkHref === 'index.html')) {
+                link.classList.add('active');
+            }
+        });
+        
+        // Close modal when clicking outside
+        window.onclick = function(event) {
+            const modal = document.getElementById('playbookModal');
+            if (event.target === modal) {
+                modal.style.display = 'none';
+            }
+        }
+    </script>
+</body>
+</html>

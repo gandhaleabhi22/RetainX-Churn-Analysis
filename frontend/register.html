@@ -1,0 +1,400 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>RetainX | Register</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        .register-container {
+            min-height: calc(100vh - 180px);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: linear-gradient(135deg, #FFFFFB 0%, #C8D9EE 100%);
+            padding: 20px;
+            margin-top: 70px;
+        }
+        .register-card {
+            background: #FFFFFB;
+            border-radius: 15px;
+            box-shadow: 0 20px 40px rgba(47, 65, 86, 0.1);
+            width: 100%;
+            max-width: 450px;
+            overflow: hidden;
+        }
+        .register-header {
+            background: linear-gradient(135deg, #2F4156 0%, #567C8D 100%);
+            color: #FFFFFB;
+            padding: 2rem;
+            text-align: center;
+        }
+        .register-form {
+            padding: 2rem;
+        }
+        .form-group {
+            margin-bottom: 1.5rem;
+        }
+        .form-group label {
+            display: block;
+            margin-bottom: 0.5rem;
+            color: #2F4156;
+            font-weight: 600;
+        }
+        .form-control {
+            width: 100%;
+            padding: 0.8rem 1rem;
+            border: 2px solid #C8D9EE;
+            border-radius: 8px;
+            font-size: 1rem;
+        }
+        .register-btn {
+            width: 100%;
+            padding: 1rem;
+            background: linear-gradient(135deg, #567C8D 0%, #2F4156 100%);
+            color: #FFFFFB;
+            border: none;
+            border-radius: 8px;
+            font-size: 1rem;
+            font-weight: bold;
+            cursor: pointer;
+        }
+        .register-footer {
+            text-align: center;
+            padding: 1.5rem;
+            border-top: 1px solid #C8D9EE;
+        }
+        .alert {
+            padding: 1rem;
+            border-radius: 8px;
+            margin-bottom: 1rem;
+            display: none;
+        }
+        .alert-success {
+            background: rgba(245, 254, 187, 0.3);
+            color: #2F4156;
+            border: 1px solid #F5FEBB;
+        }
+        .alert-error {
+            background: rgba(86, 124, 141, 0.1);
+            color: #2F4156;
+            border: 1px solid #567C8D;
+        }
+        .api-status {
+            margin-top: 1rem;
+            padding: 0.5rem;
+            text-align: center;
+            font-size: 0.9rem;
+        }
+        .name-fields {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 1rem;
+        }
+        .password-input {
+            position: relative;
+        }
+        .toggle-password {
+            position: absolute;
+            right: 10px;
+            top: 50%;
+            transform: translateY(-50%);
+            background: none;
+            border: none;
+            cursor: pointer;
+        }
+    </style>
+</head>
+<body>
+   <nav class="navbar">
+    <div class="container">
+        <a href="index.html" class="logo">
+            <i class="fas fa-chart-line"></i>
+            <span>RetainX</span>
+        </a>
+
+        <button class="menu-toggle" id="menuToggle">
+            <i class="fas fa-bars"></i>
+        </button>
+
+        <ul class="nav-links" id="navLinks">
+            <li><a href="index.html">Home</a></li>
+            <li><a href="dashboard.html">Dashboard</a></li>
+            <li><a href="data-input.html">Data Input</a></li>
+            <li><a href="analysis.html">Analytics</a></li>
+            <li><a href="reports.html">Reports</a></li>
+            <li><a href="model-performance.html">Model</a></li>
+            <li><a href="retention.html">Retention</a></li>
+            <li class="user-dropdown" id="userDropdown">
+                <button class="user-dropdown-btn" id="userDropdownBtn">
+                    <i class="fas fa-user-circle"></i>
+                    <span id="userNameNav">Account</span>
+                    <i class="fas fa-chevron-down"></i>
+                </button>
+                <div class="user-dropdown-content" id="userDropdownContent">
+                    <div class="user-info">
+                        <div class="user-avatar-dropdown">
+                            <i class="fas fa-user"></i>
+                        </div>
+                        <div class="user-name-dropdown" id="dropdownUserName">User</div>
+                        <div class="user-email-dropdown" id="dropdownUserEmail">user@example.com</div>
+                    </div>
+                    <div class="dropdown-divider"></div>
+                    <div class="dropdown-item logout" id="logoutDropdownBtn">
+                        <i class="fas fa-sign-out-alt"></i>
+                        <span>Logout</span>
+                    </div>
+                </div>
+            </li>
+        </ul>
+    </div>
+</nav>
+    <div class="register-container">
+        <div class="register-card">
+            <div class="register-header">
+                <i class="fas fa-user-plus fa-3x"></i>
+                <h1>Create Account</h1>
+            </div>
+
+            <form id="registerForm" class="register-form">
+                <div class="alert" id="alertMessage"></div>
+
+                <div class="form-group">
+                    <label>Full Name</label>
+                    <div class="name-fields">
+                        <input type="text" id="firstName" class="form-control" placeholder="First name" required>
+                        <input type="text" id="lastName" class="form-control" placeholder="Last name" required>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label>Email Address</label>
+                    <input type="email" id="email" class="form-control" placeholder="Enter your email" required>
+                </div>
+
+                <div class="form-group">
+                    <label>Password</label>
+                    <div class="password-input">
+                        <input type="password" id="password" class="form-control" placeholder="Create password" required minlength="6">
+                        <button type="button" class="toggle-password" onclick="togglePassword('password')">👁️</button>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label>Confirm Password</label>
+                    <div class="password-input">
+                        <input type="password" id="confirmPassword" class="form-control" placeholder="Confirm password" required>
+                        <button type="button" class="toggle-password" onclick="togglePassword('confirmPassword')">👁️</button>
+                    </div>
+                    <div id="passwordMatch" style="font-size: 0.85rem; margin-top: 0.3rem;"></div>
+                </div>
+
+                <div class="terms-conditions" style="display: flex; gap: 0.5rem; margin-bottom: 1.5rem;">
+                    <input type="checkbox" id="terms" required>
+                    <label>I agree to the Terms of Service</label>
+                </div>
+
+                <button type="submit" class="register-btn" id="registerButton">
+                    <span id="registerText">Create Account</span>
+                    <span id="registerLoading" style="display: none;">Loading...</span>
+                </button>
+
+                <div class="api-status" id="apiStatus">Checking API...</div>
+            </form>
+
+            <div class="register-footer">
+                Already have an account? <a href="login.html">Sign in</a>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        function togglePassword(fieldId) {
+            const field = document.getElementById(fieldId);
+            field.type = field.type === 'password' ? 'text' : 'password';
+        }
+
+        document.getElementById('registerForm').addEventListener('submit', async function(e) {
+            e.preventDefault();
+            
+            const firstName = document.getElementById('firstName').value.trim();
+            const lastName = document.getElementById('lastName').value.trim();
+            const name = firstName + ' ' + lastName;
+            const email = document.getElementById('email').value.trim();
+            const password = document.getElementById('password').value;
+            const confirmPassword = document.getElementById('confirmPassword').value;
+            const terms = document.getElementById('terms').checked;
+            const alertMsg = document.getElementById('alertMessage');
+            
+            function showAlert(msg, type) {
+                alertMsg.textContent = msg;
+                alertMsg.className = 'alert alert-' + type;
+                alertMsg.style.display = 'block';
+                setTimeout(() => { alertMsg.style.display = 'none'; }, 4000);
+            }
+            
+            if (!firstName || !lastName || !email || !password) {
+                showAlert('Please fill all fields', 'error');
+                return;
+            }
+            if (password !== confirmPassword) {
+                showAlert('Passwords do not match!', 'error');
+                return;
+            }
+            if (password.length < 6) {
+                showAlert('Password must be at least 6 characters', 'error');
+                return;
+            }
+            if (!terms) {
+                showAlert('Please agree to terms', 'error');
+                return;
+            }
+            
+            const btn = document.getElementById('registerButton');
+            const btnText = document.getElementById('registerText');
+            const btnLoading = document.getElementById('registerLoading');
+            
+            btnText.style.display = 'none';
+            btnLoading.style.display = 'inline';
+            btn.disabled = true;
+            
+            try {
+                const response = await fetch('http://localhost:5001/api/auth/register', {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify({ name, email, password })
+                });
+                
+                const data = await response.json();
+                
+                if (response.ok && data.success) {
+                    showAlert('Registration successful! Redirecting to login...', 'success');
+                    setTimeout(() => { window.location.href = 'login.html'; }, 1500);
+                } else {
+                    let errorMsg = data.message || 'Registration failed';
+                    if (errorMsg.includes('unique') || errorMsg.includes('SQLITE')) {
+                        errorMsg = 'Email already exists. Please use another email.';
+                    }
+                    showAlert(errorMsg, 'error');
+                    btnText.style.display = 'inline';
+                    btnLoading.style.display = 'none';
+                    btn.disabled = false;
+                }
+            } catch (error) {
+                showAlert('Cannot connect to server. Make sure server is running on port 5001', 'error');
+                btnText.style.display = 'inline';
+                btnLoading.style.display = 'none';
+                btn.disabled = false;
+            }
+        });
+        
+        // Check password match
+        const pwd = document.getElementById('password');
+        const confirmPwd = document.getElementById('confirmPassword');
+        const matchMsg = document.getElementById('passwordMatch');
+        
+        function checkMatch() {
+            if (pwd.value && confirmPwd.value) {
+                if (pwd.value === confirmPwd.value) {
+                    matchMsg.textContent = '✓ Passwords match';
+                    matchMsg.style.color = 'green';
+                } else {
+                    matchMsg.textContent = '✗ Passwords do not match';
+                    matchMsg.style.color = 'red';
+                }
+            } else {
+                matchMsg.textContent = '';
+            }
+        }
+        
+        pwd.addEventListener('keyup', checkMatch);
+        confirmPwd.addEventListener('keyup', checkMatch);
+        
+        // Check API status
+        async function checkAPI() {
+            const apiStatus = document.getElementById('apiStatus');
+            try {
+                const response = await fetch('http://localhost:5001/api/health');
+                if (response.ok) {
+                    apiStatus.textContent = '✓ API Connected';
+                    apiStatus.style.color = 'green';
+                } else {
+                    apiStatus.textContent = '⚠ API Error';
+                    apiStatus.style.color = 'orange';
+                }
+            } catch (error) {
+                apiStatus.textContent = '✗ API Disconnected';
+                apiStatus.style.color = 'red';
+            }
+        }
+        checkAPI();
+    </script>
+    <script>
+    // User Dropdown Functionality
+    const userDropdownBtn = document.getElementById('userDropdownBtn');
+    const userDropdownContent = document.getElementById('userDropdownContent');
+    
+    if (userDropdownBtn && userDropdownContent) {
+        userDropdownBtn.addEventListener('click', function(e) {
+            e.stopPropagation();
+            userDropdownContent.classList.toggle('show');
+        });
+        
+        // Close dropdown when clicking outside
+        document.addEventListener('click', function(e) {
+            if (!userDropdownBtn.contains(e.target) && !userDropdownContent.contains(e.target)) {
+                userDropdownContent.classList.remove('show');
+            }
+        });
+    }
+    
+    // Update user info in dropdown
+    const token = localStorage.getItem('authToken');
+    const user = localStorage.getItem('user');
+    
+    if (token && user) {
+        try {
+            const userData = JSON.parse(user);
+            const userNameNav = document.getElementById('userNameNav');
+            const dropdownUserName = document.getElementById('dropdownUserName');
+            const dropdownUserEmail = document.getElementById('dropdownUserEmail');
+            
+            if (userNameNav) userNameNav.textContent = userData.name || 'User';
+            if (dropdownUserName) dropdownUserName.textContent = userData.name || 'User';
+            if (dropdownUserEmail) dropdownUserEmail.textContent = userData.email || 'user@example.com';
+        } catch(e) {}
+    }
+    
+    // Logout functionality
+    const logoutBtn = document.getElementById('logoutDropdownBtn');
+    if (logoutBtn) {
+        logoutBtn.addEventListener('click', function() {
+            localStorage.removeItem('authToken');
+            localStorage.removeItem('user');
+            localStorage.removeItem('isAuthenticated');
+            window.location.href = 'login.html';
+        });
+    }
+    
+    // Mobile menu toggle
+    const menuToggle = document.getElementById('menuToggle');
+    const navLinks = document.getElementById('navLinks');
+    if (menuToggle && navLinks) {
+        menuToggle.addEventListener('click', function() {
+            navLinks.classList.toggle('active');
+        });
+    }
+    
+    // Highlight current page in navbar
+    const currentPage = window.location.pathname.split('/').pop();
+    const navLinkItems = document.querySelectorAll('.nav-links a');
+    navLinkItems.forEach(link => {
+        const linkHref = link.getAttribute('href');
+        if (linkHref === currentPage || (currentPage === '' && linkHref === 'index.html')) {
+            link.classList.add('active');
+        }
+    });
+</script>
+</body>
+</html>

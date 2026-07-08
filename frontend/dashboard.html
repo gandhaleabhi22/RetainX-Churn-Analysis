@@ -1,0 +1,933 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>RetainX | Dashboard</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    
+    <style>
+        /* Dashboard Layout Styles - Same as data-input.html */
+        .dashboard {
+            display: flex;
+            min-height: 100vh;
+            background: #f8f9fa;
+        }
+
+        /* Sidebar - Same as data-input.html */
+        .sidebar {
+            width: 250px;
+            background: linear-gradient(135deg, #2d3748 0%, #4a5568 100%);
+            color: white;
+            padding: 2rem 0;
+            position: fixed;
+            height: 100vh;
+            overflow-y: auto;
+        }
+
+        .sidebar-header {
+            padding: 0 1.5rem 2rem;
+            border-bottom: 1px solid rgba(255,255,255,0.1);
+            margin-bottom: 1rem;
+        }
+
+        .sidebar-header .logo {
+            font-size: 1.2rem;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            justify-content: center;
+        }
+
+        .user-profile {
+            text-align: center;
+            margin-bottom: 2rem;
+        }
+
+        .user-avatar {
+            width: 80px;
+            height: 80px;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 1rem;
+            font-size: 2rem;
+        }
+
+        .user-name {
+            font-size: 1.2rem;
+            font-weight: bold;
+            margin-bottom: 0.5rem;
+        }
+
+        .user-role {
+            color: #cbd5e0;
+            font-size: 0.9rem;
+        }
+
+        .sidebar-nav {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+        }
+
+        .sidebar-nav li {
+            margin-bottom: 0.5rem;
+        }
+
+        .sidebar-nav a {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            color: #cbd5e0;
+            text-decoration: none;
+            padding: 0.8rem 1.5rem;
+            transition: all 0.3s;
+        }
+
+        .sidebar-nav a:hover,
+        .sidebar-nav a.active {
+            background: rgba(255,255,255,0.1);
+            color: white;
+            border-left: 4px solid #667eea;
+        }
+
+        .sidebar-nav i {
+            width: 20px;
+            text-align: center;
+        }
+
+        /* Main Content */
+        .main-content {
+            flex: 1;
+            margin-left: 250px;
+            padding: 2rem;
+            min-height: 100vh;
+        }
+
+        .top-bar {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 2rem;
+            padding-bottom: 1rem;
+            border-bottom: 1px solid #e2e8f0;
+        }
+
+        .page-title h1 {
+            font-size: 2rem;
+            color: #2d3748;
+            margin: 0;
+        }
+
+        .page-title p {
+            color: #718096;
+            margin: 0.5rem 0 0 0;
+        }
+
+        .top-actions {
+            display: flex;
+            gap: 1rem;
+            align-items: center;
+        }
+
+        .api-status {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            padding: 0.5rem 1rem;
+            border-radius: 20px;
+            font-size: 0.8rem;
+        }
+
+        .mobile-menu-toggle {
+            display: none;
+            font-size: 1.5rem;
+            cursor: pointer;
+            background: none;
+            border: none;
+            color: #4a5568;
+        }
+
+        /* Stats Grid */
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+            gap: 1.5rem;
+            margin-bottom: 2rem;
+        }
+        
+        .stat-card {
+            background: white;
+            border-radius: 10px;
+            padding: 1.5rem;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+            transition: all 0.3s;
+        }
+        
+        .stat-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 20px rgba(0,0,0,0.1);
+        }
+        
+        .stat-icon {
+            width: 50px;
+            height: 50px;
+            border-radius: 10px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.5rem;
+            margin-bottom: 1rem;
+            background: rgba(102, 126, 234, 0.1);
+        }
+        
+        .stat-value {
+            font-size: 2rem;
+            font-weight: bold;
+            color: #2d3748;
+            margin-bottom: 0.5rem;
+        }
+        
+        .stat-label {
+            color: #718096;
+            font-size: 0.9rem;
+        }
+        
+        .charts-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(450px, 1fr));
+            gap: 1.5rem;
+            margin-bottom: 2rem;
+        }
+        
+        .chart-card {
+            background: white;
+            border-radius: 10px;
+            padding: 1.5rem;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+        }
+        
+        .chart-card h3 {
+            color: #2d3748;
+            margin-bottom: 1rem;
+            font-size: 1.1rem;
+        }
+        
+        .chart-container {
+            height: 300px;
+            position: relative;
+        }
+        
+        .matplotlib-charts {
+            background: white;
+            border-radius: 10px;
+            padding: 1.5rem;
+            margin: 2rem 0;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+        }
+        
+        .matplotlib-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 2rem;
+        }
+        
+        .matplotlib-card {
+            text-align: center;
+            background: #f7fafc;
+            border-radius: 8px;
+            padding: 1rem;
+        }
+        
+        .matplotlib-card h4 {
+            color: #2d3748;
+            margin-bottom: 1rem;
+        }
+        
+        .matplotlib-card img {
+            width: 100%;
+            max-width: 400px;
+            border-radius: 8px;
+            border: 1px solid #e2e8f0;
+        }
+        
+        .refresh-btn {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            border: none;
+            padding: 0.8rem 1.5rem;
+            border-radius: 8px;
+            cursor: pointer;
+            font-size: 1rem;
+            margin-top: 1rem;
+            transition: all 0.3s;
+        }
+        
+        .refresh-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(102, 126, 234, 0.3);
+        }
+        
+        .risk-badge {
+            padding: 0.3rem 0.8rem;
+            border-radius: 50px;
+            font-size: 0.8rem;
+            font-weight: 600;
+        }
+        
+        .risk-low {
+            background: #c6f6d5;
+            color: #22543d;
+        }
+        
+        .risk-medium {
+            background: #fed7d7;
+            color: #742a2a;
+        }
+        
+        .risk-high {
+            background: #feebc8;
+            color: #7b341e;
+        }
+        
+        .recent-table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+        
+        .recent-table th,
+        .recent-table td {
+            padding: 0.75rem;
+            text-align: left;
+            border-bottom: 1px solid #e2e8f0;
+        }
+        
+        .recent-table th {
+            color: #2d3748;
+            font-weight: 600;
+        }
+        
+        .satisfaction-stars {
+            color: #ecc94b;
+        }
+        
+        .algorithm-badge {
+            background: #edf2f7;
+            padding: 0.5rem 1rem;
+            border-radius: 20px;
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            font-size: 0.85rem;
+            color: #4a5568;
+            margin-bottom: 1rem;
+        }
+
+        .algorithm-badge i {
+            color: #667eea;
+        }
+
+        @media (max-width: 1024px) {
+            .sidebar {
+                transform: translateX(-100%);
+                transition: transform 0.3s;
+                z-index: 1000;
+            }
+            .sidebar.active {
+                transform: translateX(0);
+            }
+            .main-content {
+                margin-left: 0;
+                width: 100%;
+            }
+            .mobile-menu-toggle {
+                display: block;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .main-content {
+                padding: 1rem;
+            }
+            .top-bar {
+                flex-direction: column;
+                align-items: flex-start;
+                gap: 1rem;
+            }
+            .charts-grid {
+                grid-template-columns: 1fr;
+            }
+            .matplotlib-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- TOP NAVBAR - Same as data-input.html -->
+    <nav class="navbar">
+        <div class="container">
+            <a href="index.html" class="logo">
+                <i class="fas fa-chart-line"></i>
+                <span>RetainX</span>
+            </a>
+
+            <button class="menu-toggle" id="menuToggle">
+                <i class="fas fa-bars"></i>
+            </button>
+
+            <ul class="nav-links" id="navLinks">
+                <li><a href="index.html">Home</a></li>
+                <li><a href="dashboard.html" class="active">Dashboard</a></li>
+                <li><a href="data-input.html">Data Input</a></li>
+                <li><a href="analysis.html">Analytics</a></li>
+                <li><a href="reports.html">Reports</a></li>
+                <li><a href="model-performance.html">Model</a></li>
+                <li><a href="retention.html">Retention</a></li>
+                <li class="user-dropdown" id="userDropdown">
+                    <button class="user-dropdown-btn" id="userDropdownBtn">
+                        <i class="fas fa-user-circle"></i>
+                        <span id="userNameNav">Account</span>
+                        <i class="fas fa-chevron-down"></i>
+                    </button>
+                    <div class="user-dropdown-content" id="userDropdownContent">
+                        <div class="user-info">
+                            <div class="user-avatar-dropdown">
+                                <i class="fas fa-user"></i>
+                            </div>
+                            <div class="user-name-dropdown" id="dropdownUserName">User</div>
+                            <div class="user-email-dropdown" id="dropdownUserEmail">user@example.com</div>
+                        </div>
+                        <div class="dropdown-divider"></div>
+                        <div class="dropdown-item logout" id="logoutDropdownBtn">
+                            <i class="fas fa-sign-out-alt"></i>
+                            <span>Logout</span>
+                        </div>
+                    </div>
+                </li>
+            </ul>
+        </div>
+    </nav>
+
+    <div class="dashboard">
+        <!-- Sidebar - Same as data-input.html -->
+        <div class="sidebar" id="sidebar">
+            <div class="sidebar-header">
+                <div class="logo">
+                    <i class="fas fa-chart-line"></i>
+                    <span>RetainX</span>
+                </div>
+            </div>
+            
+            <div class="user-profile">
+                <div class="user-avatar">
+                    <i class="fas fa-user"></i>
+                </div>
+                <div class="user-name" id="userName">Loading...</div>
+                <div class="user-role" id="userRole">Administrator</div>
+            </div>
+            
+            <ul class="sidebar-nav">
+                <li><a href="dashboard.html" class="active">
+                    <i class="fas fa-home"></i>
+                    <span>Dashboard</span>
+                </a></li>
+                <li><a href="data-input.html">
+                    <i class="fas fa-upload"></i>
+                    <span>Data Input</span>
+                </a></li>
+                <li><a href="analysis.html">
+                    <i class="fas fa-chart-bar"></i>
+                    <span>Analysis</span>
+                </a></li>
+                <li><a href="model-performance.html">
+                    <i class="fas fa-cogs"></i>
+                    <span>Model Performance</span>
+                </a></li>
+                <li><a href="reports.html">
+                    <i class="fas fa-file-alt"></i>
+                    <span>Reports</span>
+                </a></li>
+            </ul>
+        </div>
+
+        <!-- Main Content -->
+        <div class="main-content">
+            <!-- Top Bar -->
+            <div class="top-bar">
+                <div class="page-title">
+                    <h1>Dashboard</h1>
+                    <p>Customer Churn Analysis Overview</p>
+                </div>
+                <div class="top-actions">
+                    <button class="mobile-menu-toggle" id="mobileMenuToggle">
+                        <i class="fas fa-bars"></i>
+                    </button>
+                    <div class="api-status" id="apiStatus">
+                        <i class="fas fa-circle"></i> <span id="apiStatusText">Connected</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Algorithm Badge -->
+            <div class="algorithm-badge">
+                <i class="fas fa-brain"></i> 
+                <strong>Algorithm:</strong> Logistic Regression (Fixed)
+            </div>
+
+            <!-- Stats Grid -->
+            <div class="stats-grid">
+                <div class="stat-card">
+                    <div class="stat-icon">
+                        <i class="fas fa-users" style="color: #667eea;"></i>
+                    </div>
+                    <div class="stat-value" id="totalCustomers">0</div>
+                    <div class="stat-label">Total Customers</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-icon">
+                        <i class="fas fa-exclamation-triangle" style="color: #e53e3e;"></i>
+                    </div>
+                    <div class="stat-value" id="highRiskCustomers">0</div>
+                    <div class="stat-label">High Risk Customers</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-icon">
+                        <i class="fas fa-star" style="color: #ecc94b;"></i>
+                    </div>
+                    <div class="stat-value" id="avgSatisfaction">0</div>
+                    <div class="stat-label">Avg Satisfaction</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-icon">
+                        <i class="fas fa-chart-line" style="color: #48bb78;"></i>
+                    </div>
+                    <div class="stat-value" id="predictedChurn">0%</div>
+                    <div class="stat-label">Predicted Churn Rate</div>
+                </div>
+            </div>
+
+            <!-- Charts Grid (Chart.js) -->
+            <div class="charts-grid">
+                <div class="chart-card">
+                    <h3><i class="fas fa-chart-pie"></i> Risk Distribution</h3>
+                    <div class="chart-container">
+                        <canvas id="riskChart"></canvas>
+                    </div>
+                </div>
+                <div class="chart-card">
+                    <h3><i class="fas fa-chart-line"></i> Churn Trend</h3>
+                    <div class="chart-container">
+                        <canvas id="trendChart"></canvas>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Matplotlib Charts Section -->
+            <div class="matplotlib-charts">
+                <h2 style="color: #2d3748; margin-bottom: 1.5rem;">
+                    <i class="fas fa-chart-bar"></i> Matplotlib Analysis Charts
+                </h2>
+                <div class="matplotlib-grid" id="matplotlibGrid">
+                    <div class="matplotlib-card">
+                        <h4>Risk Level Distribution (Pie)</h4>
+                        <img id="riskPieImg" src="/static/charts/risk_pie.png" alt="Risk Pie Chart" onerror="this.src='data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20width%3D%22400%22%20height%3D%22300%22%3E%3Crect%20width%3D%22400%22%20height%3D%22300%22%20fill%3D%22%23e2e8f0%22%2F%3E%3Ctext%20x%3D%2250%25%22%20y%3D%2250%25%22%20text-anchor%3D%22middle%22%20fill%3D%22%234a5568%22%3ENo Data%3C%2Ftext%3E%3C%2Fsvg%3E'">
+                    </div>
+                    <div class="matplotlib-card">
+                        <h4>Risk Level Distribution (Bar)</h4>
+                        <img id="riskBarImg" src="/static/charts/risk_bar.png" alt="Risk Bar Chart" onerror="this.src='data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20width%3D%22400%22%20height%3D%22300%22%3E%3Crect%20width%3D%22400%22%20height%3D%22300%22%20fill%3D%22%23e2e8f0%22%2F%3E%3Ctext%20x%3D%2250%25%22%20y%3D%2250%25%22%20text-anchor%3D%22middle%22%20fill%3D%22%234a5568%22%3ENo Data%3C%2Ftext%3E%3C%2Fsvg%3E'">
+                    </div>
+                    <div class="matplotlib-card">
+                        <h4>Age Group Distribution</h4>
+                        <img id="ageGroupImg" src="/static/charts/age_group.png" alt="Age Group Chart" onerror="this.src='data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20width%3D%22400%22%20height%3D%22300%22%3E%3Crect%20width%3D%22400%22%20height%3D%22300%22%20fill%3D%22%23e2e8f0%22%2F%3E%3Ctext%20x%3D%2250%25%22%20y%3D%2250%25%22%20text-anchor%3D%22middle%22%20fill%3D%22%234a5568%22%3ENo Data%3C%2Ftext%3E%3C%2Fsvg%3E'">
+                    </div>
+                    <div class="matplotlib-card">
+                        <h4>Subscription Duration</h4>
+                        <img id="durationImg" src="/static/charts/duration.png" alt="Duration Chart" onerror="this.src='data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20width%3D%22400%22%20height%3D%22300%22%3E%3Crect%20width%3D%22400%22%20height%3D%22300%22%20fill%3D%22%23e2e8f0%22%2F%3E%3Ctext%20x%3D%2250%25%22%20y%3D%2250%25%22%20text-anchor%3D%22middle%22%20fill%3D%22%234a5568%22%3ENo Data%3C%2Ftext%3E%3C%2Fsvg%3E'">
+                    </div>
+                    <div class="matplotlib-card">
+                        <h4>Churn Probability Distribution</h4>
+                        <img id="probabilityImg" src="/static/charts/probability_hist.png" alt="Probability Histogram" onerror="this.src='data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20width%3D%22400%22%20height%3D%22300%22%3E%3Crect%20width%3D%22400%22%20height%3D%22300%22%20fill%3D%22%23e2e8f0%22%2F%3E%3Ctext%20x%3D%2250%25%22%20y%3D%2250%25%22%20text-anchor%3D%22middle%22%20fill%3D%22%234a5568%22%3ENo Data%3C%2Ftext%3E%3C%2Fsvg%3E'">
+                    </div>
+                </div>
+                <div style="text-align: center; margin-top: 1.5rem;">
+                    <button class="refresh-btn" onclick="refreshMatplotlibCharts()">
+                        <i class="fas fa-sync-alt"></i> Refresh Matplotlib Charts
+                    </button>
+                </div>
+            </div>
+
+            <!-- Recent Customers -->
+            <div class="chart-card" style="margin-top: 2rem;">
+                <h3><i class="fas fa-history"></i> Recent Customers</h3>
+                <div style="overflow-x: auto;">
+                    <table class="recent-table">
+                        <thead>
+                            <tr>
+                                <th>ID</th>
+                                <th>Age Group</th>
+                                <th>Satisfaction</th>
+                                <th>Churn Prob</th>
+                                <th>Risk Level</th>
+                                <th>Date</th>
+                            </tr>
+                        </thead>
+                        <tbody id="recentCustomersBody">
+                            <tr>
+                                <td colspan="6" style="text-align: center; padding: 2rem;">Loading...<\/td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Mobile menu toggle for sidebar
+        const mobileMenuToggle = document.getElementById('mobileMenuToggle');
+        const sidebar = document.getElementById('sidebar');
+        if (mobileMenuToggle && sidebar) {
+            mobileMenuToggle.addEventListener('click', function() {
+                sidebar.classList.toggle('active');
+            });
+        }
+        
+        // Top navbar mobile toggle
+        const menuToggle = document.getElementById('menuToggle');
+        const navLinks = document.getElementById('navLinks');
+        if (menuToggle && navLinks) {
+            menuToggle.addEventListener('click', function() {
+                navLinks.classList.toggle('active');
+            });
+        }
+        
+        // User Dropdown Functionality
+        const userDropdownBtn = document.getElementById('userDropdownBtn');
+        const userDropdownContent = document.getElementById('userDropdownContent');
+        
+        if (userDropdownBtn && userDropdownContent) {
+            userDropdownBtn.addEventListener('click', function(e) {
+                e.stopPropagation();
+                userDropdownContent.classList.toggle('show');
+            });
+            
+            document.addEventListener('click', function(e) {
+                if (userDropdownBtn && userDropdownContent && !userDropdownBtn.contains(e.target) && !userDropdownContent.contains(e.target)) {
+                    userDropdownContent.classList.remove('show');
+                }
+            });
+        }
+        
+        // Update user info
+        const tokenUser = localStorage.getItem('authToken');
+        const userData = localStorage.getItem('user');
+        
+        if (tokenUser && userData) {
+            try {
+                const parsedUser = JSON.parse(userData);
+                const userNameSpan = document.getElementById('userName');
+                const userNameNav = document.getElementById('userNameNav');
+                const dropdownUserName = document.getElementById('dropdownUserName');
+                const dropdownUserEmail = document.getElementById('dropdownUserEmail');
+                
+                if (userNameSpan) userNameSpan.textContent = parsedUser.name || 'User';
+                if (userNameNav) userNameNav.textContent = parsedUser.name || 'Account';
+                if (dropdownUserName) dropdownUserName.textContent = parsedUser.name || 'User';
+                if (dropdownUserEmail) dropdownUserEmail.textContent = parsedUser.email || 'user@example.com';
+            } catch(e) {}
+        }
+        
+        // Logout functionality
+        const logoutBtn = document.getElementById('logoutDropdownBtn');
+        if (logoutBtn) {
+            logoutBtn.addEventListener('click', function() {
+                localStorage.removeItem('authToken');
+                localStorage.removeItem('user');
+                localStorage.removeItem('isAuthenticated');
+                window.location.href = 'login.html';
+            });
+        }
+        
+        // API Configuration
+        const API_BASE_URL = 'http://localhost:5001/api';
+        let charts = {};
+        
+        // DOM Elements
+        const totalCustomersElement = document.getElementById('totalCustomers');
+        const highRiskCustomersElement = document.getElementById('highRiskCustomers');
+        const avgSatisfactionElement = document.getElementById('avgSatisfaction');
+        const predictedChurnElement = document.getElementById('predictedChurn');
+        const recentCustomersBody = document.getElementById('recentCustomersBody');
+        const apiStatusText = document.getElementById('apiStatusText');
+        
+        // Check Authentication
+        function checkAuthentication() {
+            const isAuthenticated = localStorage.getItem('isAuthenticated') === 'true';
+            
+            if (!isAuthenticated) {
+                window.location.href = 'login.html';
+                return false;
+            }
+            return true;
+        }
+        
+        // Check API Connection
+        async function checkAPIConnection() {
+            try {
+                const response = await fetch(`${API_BASE_URL}/health`);
+                if (response.ok) {
+                    if (apiStatusText) apiStatusText.textContent = 'Connected';
+                } else {
+                    throw new Error('API not responding');
+                }
+            } catch (error) {
+                if (apiStatusText) apiStatusText.textContent = 'Disconnected';
+                console.error('API Connection Error:', error);
+            }
+        }
+        
+        // Load Dashboard Data
+        async function loadDashboardData() {
+            try {
+                const token = localStorage.getItem('authToken');
+                const response = await fetch(`${API_BASE_URL}/data/customers`, {
+                    headers: token ? { 'Authorization': `Bearer ${token}` } : {}
+                });
+                const data = await response.json();
+                
+                if (data.success && data.data) {
+                    const customers = data.data;
+                    updateStats(customers);
+                    updateRecentCustomersTable(customers);
+                    initializeCharts(customers);
+                } else {
+                    showFallbackData();
+                }
+            } catch (error) {
+                console.error('Error loading dashboard data:', error);
+                showFallbackData();
+            }
+        }
+        
+        // Update Stats - FIXED: Convert string values to numbers properly
+        function updateStats(customers) {
+            const total = customers.length;
+            const highRisk = customers.filter(c => c.churn_risk_category === 'High').length;
+            
+            // Convert string values to numbers before calculating
+            let satisfactionSum = 0;
+            let satisfactionCount = 0;
+            let churnProbSum = 0;
+            let churnProbCount = 0;
+            
+            customers.forEach(c => {
+                // Convert satisfaction from string to number
+                let sat = parseFloat(c.content_satisfaction);
+                if (!isNaN(sat) && sat >= 1 && sat <= 5) {
+                    satisfactionSum += sat;
+                    satisfactionCount++;
+                }
+                
+                // Convert churn probability from string to number
+                let prob = parseFloat(c.predicted_churn_probability);
+                if (!isNaN(prob) && prob >= 0 && prob <= 1) {
+                    churnProbSum += prob;
+                    churnProbCount++;
+                }
+            });
+            
+            // Calculate averages
+            const avgSatisfactionRaw = satisfactionCount > 0 ? satisfactionSum / satisfactionCount : 0;
+            const avgSatisfactionPercent = (avgSatisfactionRaw / 5) * 100;
+            const avgChurnProb = churnProbCount > 0 ? churnProbSum / churnProbCount : 0;
+            
+            totalCustomersElement.textContent = total;
+            highRiskCustomersElement.textContent = highRisk;
+            avgSatisfactionElement.textContent = avgSatisfactionPercent.toFixed(2) + '%';
+            predictedChurnElement.textContent = `${(avgChurnProb * 100).toFixed(2)}%`;
+        }
+        
+        // Update Recent Customers Table
+        function updateRecentCustomersTable(customers) {
+            const recentCustomers = [...customers]
+                .sort((a, b) => new Date(b.created_at || Date.now()) - new Date(a.created_at || Date.now()))
+                .slice(0, 5);
+            
+            if (recentCustomers.length === 0) {
+                recentCustomersBody.innerHTML = `
+                    <tr><td colspan="6" style="text-align: center; padding: 2rem;">No customer data available. <a href="data-input.html">Add some data</a><\/td><\/tr>
+                `;
+                return;
+            }
+            
+            recentCustomersBody.innerHTML = recentCustomers.map(customer => {
+                // Parse satisfaction as number for stars
+                const satValue = parseFloat(customer.content_satisfaction) || 3;
+                return `
+                <tr>
+                    <td>${customer.id || 'N/A'}<\/td>
+                    <td>${customer.age_group || 'N/A'}<\/td>
+                    <td class="satisfaction-stars">${getStars(satValue)}<\/td>
+                    <td>${customer.predicted_churn_probability ? (parseFloat(customer.predicted_churn_probability) * 100).toFixed(1) + '%' : 'N/A'}<\/td>
+                    <td><span class="risk-badge risk-${customer.churn_risk_category?.toLowerCase() || 'medium'}">${customer.churn_risk_category || 'Medium'}<\/span><\/td>
+                    <td>${formatDate(customer.created_at)}<\/td>
+                <\/tr>
+            `}).join('');
+        }
+        
+        function getStars(rating) {
+            const stars = [];
+            for (let i = 1; i <= 5; i++) {
+                stars.push(`<i class="fas fa-star" style="color: ${i <= rating ? '#ecc94b' : '#e2e8f0'}"></i>`);
+            }
+            return stars.join('');
+        }
+        
+        function formatDate(dateString) {
+            if (!dateString) return 'N/A';
+            const date = new Date(dateString);
+            return date.toLocaleDateString('en-US', {
+                year: 'numeric',
+                month: 'short',
+                day: 'numeric'
+            });
+        }
+        
+        // Initialize Charts (Chart.js)
+        function initializeCharts(customers) {
+            Object.values(charts).forEach(chart => {
+                if (chart) chart.destroy();
+            });
+            
+            const riskData = calculateRiskDistribution(customers);
+            const riskCtx = document.getElementById('riskChart').getContext('2d');
+            
+            charts.riskChart = new Chart(riskCtx, {
+                type: 'doughnut',
+                data: {
+                    labels: ['Low Risk', 'Medium Risk', 'High Risk'],
+                    datasets: [{
+                        data: [riskData.low, riskData.medium, riskData.high],
+                        backgroundColor: ['#48bb78', '#ecc94b', '#e53e3e'],
+                        borderWidth: 2,
+                        borderColor: '#fff'
+                    }]
+                },
+                options: {
+                    responsive: true,
+                    maintainAspectRatio: false,
+                    plugins: {
+                        legend: { position: 'bottom' }
+                    }
+                }
+            });
+            
+            const trendCtx = document.getElementById('trendChart').getContext('2d');
+            charts.trendChart = new Chart(trendCtx, {
+                type: 'line',
+                data: {
+                    labels: ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul'],
+                    datasets: [{
+                        label: 'Churn Rate %',
+                        data: [25, 28, 26, 32, 30, 27, 24],
+                        borderColor: '#667eea',
+                        backgroundColor: 'rgba(102, 126, 234, 0.1)',
+                        borderWidth: 3,
+                        fill: true,
+                        tension: 0.4
+                    }]
+                },
+                options: {
+                    responsive: true,
+                    maintainAspectRatio: false,
+                    scales: {
+                        y: { beginAtZero: false, min: 20, max: 35 }
+                    }
+                }
+            });
+        }
+        
+        function calculateRiskDistribution(customers) {
+            const distribution = { low: 0, medium: 0, high: 0 };
+            customers.forEach(customer => {
+                const risk = customer.churn_risk_category?.toLowerCase();
+                if (risk === 'low') distribution.low++;
+                else if (risk === 'high') distribution.high++;
+                else distribution.medium++;
+            });
+            return distribution;
+        }
+        
+        // Refresh Matplotlib Charts
+        async function refreshMatplotlibCharts() {
+            const token = localStorage.getItem('authToken');
+            
+            if (!token) {
+                alert('Please login first');
+                window.location.href = 'login.html';
+                return;
+            }
+            
+            alert('Generating Matplotlib charts...');
+            
+            try {
+                const response = await fetch(`${API_BASE_URL}/chart-data`, {
+                    headers: { 'Authorization': `Bearer ${token}` }
+                });
+                const result = await response.json();
+                
+                if (result.success) {
+                    const chartResponse = await fetch(`${API_BASE_URL}/generate-charts`, {
+                        method: 'POST',
+                        headers: { 
+                            'Authorization': `Bearer ${token}`,
+                            'Content-Type': 'application/json'
+                        },
+                        body: JSON.stringify(result.data)
+                    });
+                    
+                    const chartResult = await chartResponse.json();
+                    
+                    if (chartResult.success) {
+                        document.getElementById('riskPieImg').src = `/static/charts/risk_pie.png?t=${Date.now()}`;
+                        document.getElementById('riskBarImg').src = `/static/charts/risk_bar.png?t=${Date.now()}`;
+                        document.getElementById('ageGroupImg').src = `/static/charts/age_group.png?t=${Date.now()}`;
+                        document.getElementById('durationImg').src = `/static/charts/duration.png?t=${Date.now()}`;
+                        document.getElementById('probabilityImg').src = `/static/charts/probability_hist.png?t=${Date.now()}`;
+                        alert('Charts refreshed successfully!');
+                    } else {
+                        alert('Failed to generate charts');
+                    }
+                }
+            } catch (error) {
+                console.error('Error:', error);
+                alert('Error generating charts: ' + error.message);
+            }
+        }
+        
+        function showFallbackData() {
+            totalCustomersElement.textContent = '0';
+            highRiskCustomersElement.textContent = '0';
+            avgSatisfactionElement.textContent = '0';
+            predictedChurnElement.textContent = '0%';
+            recentCustomersBody.innerHTML = '<tr><td colspan="6" style="text-align: center;">Upload CSV file to see data<\/td><\/tr>';
+        }
+        
+        // Initialize Dashboard
+        async function initDashboard() {
+            if (!checkAuthentication()) return;
+            await checkAPIConnection();
+            await loadDashboardData();
+            setInterval(checkAPIConnection, 60000);
+        }
+        
+        document.addEventListener('DOMContentLoaded', initDashboard);
+    </script>
+</body>
+</html>

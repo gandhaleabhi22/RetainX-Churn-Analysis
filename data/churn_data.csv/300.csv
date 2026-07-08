@@ -1,0 +1,170 @@
+age_group,subscription_duration,subscription_plan,monthly_spend,usage_frequency,nps_score,content_satisfaction,value_perception,churn_likelihood,switching_behavior,account_sharing,competitor_awareness,bundling_preference,payment_method,primary_platform
+18-35,More than 2 years,Premium,More than ₹1000,Daily,10,5,Excellent value,Very unlikely,No changes,Yes, with family,No, satisfied with current,Yes, definitely,Annual payment,Netflix
+35+,1-2 years,Standard,₹200 - ₹500,Often,8,4,Good value,Not sure,No changes,No, only I use it,Yes, but not seriously,Maybe, depends on price,Monthly auto-renewal,Amazon Prime Video
+Under 18,Less than 1 month,Basic,Less than ₹200,Rarely,2,1,Poor value,Very likely,Yes, switched completely,Yes, with friends,Yes, actively considering,No, prefer separate,Pay as you go,Disney+ Hotstar
+18-35,3-6 months,Premium,₹501 - ₹1000,Daily,9,5,Excellent value,Very unlikely,Yes, added new one but kept old,Yes, with family,No, satisfied with current,Yes, definitely,Annual payment,Netflix
+35+,6-12 months,Basic,Less than ₹200,Rarely,4,2,Poor value,Very likely,Yes, dropped one but kept others,No, only I use it,Yes, actively considering,No, prefer separate,Pay as you go,Sony LIV
+18-35,1-3 months,Standard,₹200 - ₹500,Often,7,3,Average,Not sure,No changes,Yes, with family,Yes, but not seriously,Maybe, depends on price,Monthly auto-renewal,Jio Cinema
+Under 18,More than 2 years,Premium,More than ₹1000,Daily,10,5,Excellent value,Very unlikely,No changes,Yes, with family,No, satisfied with current,Yes, definitely,Annual payment,YouTube Premium
+35+,Less than 1 month,Basic,Less than ₹200,Rarely,3,2,Poor value,Very likely,Yes, switched completely,No, only I use it,Yes, actively considering,No, prefer separate,Pay as you go,Netflix
+18-35,1-2 years,Standard,₹200 - ₹500,Often,8,4,Good value,Not sure,Yes, added new one but kept old,Yes, with friends,Yes, but not seriously,Maybe, depends on price,Monthly auto-renewal,Amazon Prime Video
+35+,3-6 months,Premium,₹501 - ₹1000,Daily,9,5,Excellent value,Very unlikely,No changes,Yes, with family,No, satisfied with current,Yes, definitely,Annual payment,Disney+ Hotstar
+18-35,6-12 months,Basic,Less than ₹200,Rarely,5,3,Poor value,Very likely,Yes, dropped one but kept others,No, only I use it,Yes, actively considering,No, prefer separate,Pay as you go,Netflix
+Under 18,1-3 months,Standard,₹200 - ₹500,Often,6,3,Average,Not sure,No changes,Yes, with family,Yes, but not seriously,Maybe, depends on price,Monthly auto-renewal,Sony LIV
+35+,More than 2 years,Premium,More than ₹1000,Daily,10,5,Excellent value,Very unlikely,No changes,Yes, with family,No, satisfied with current,Yes, definitely,Annual payment,Jio Cinema
+18-35,Less than 1 month,Basic,Less than ₹200,Rarely,2,1,Poor value,Very likely,Yes, switched completely,Yes, with friends,Yes, actively considering,No, prefer separate,Pay as you go,YouTube Premium
+35+,1-2 years,Standard,₹200 - ₹500,Often,7,4,Good value,Not sure,No changes,No, only I use it,Yes, but not seriously,Maybe, depends on price,Monthly auto-renewal,Netflix
+18-35,3-6 months,Premium,₹501 - ₹1000,Daily,9,5,Excellent value,Very unlikely,Yes, added new one but kept old,Yes, with family,No, satisfied with current,Yes, definitely,Annual payment,Amazon Prime Video
+Under 18,6-12 months,Basic,Less than ₹200,Rarely,4,2,Poor value,Very likely,Yes, dropped one but kept others,No, only I use it,Yes, actively considering,No, prefer separate,Pay as you go,Disney+ Hotstar
+35+,1-3 months,Standard,₹200 - ₹500,Often,8,4,Good value,Not sure,No changes,Yes, with family,Yes, but not seriously,Maybe, depends on price,Monthly auto-renewal,Netflix
+18-35,More than 2 years,Premium,More than ₹1000,Daily,10,5,Excellent value,Very unlikely,No changes,Yes, with family,No, satisfied with current,Yes, definitely,Annual payment,Sony LIV
+35+,Less than 1 month,Basic,Less than ₹200,Rarely,3,2,Poor value,Very likely,Yes, switched completely,No, only I use it,Yes, actively considering,No, prefer separate,Pay as you go,Jio Cinema
+18-35,1-2 years,Standard,₹200 - ₹500,Often,7,3,Average,Not sure,Yes, added new one but kept old,Yes, with friends,Yes, but not seriously,Maybe, depends on price,Monthly auto-renewal,YouTube Premium
+Under 18,3-6 months,Premium,₹501 - ₹1000,Daily,9,5,Excellent value,Very unlikely,No changes,Yes, with family,No, satisfied with current,Yes, definitely,Annual payment,Netflix
+35+,6-12 months,Basic,Less than ₹200,Rarely,5,3,Poor value,Very likely,Yes, dropped one but kept others,No, only I use it,Yes, actively considering,No, prefer separate,Pay as you go,Amazon Prime Video
+18-35,1-3 months,Standard,₹200 - ₹500,Often,8,4,Good value,Not sure,No changes,Yes, with family,Yes, but not seriously,Maybe, depends on price,Monthly auto-renewal,Disney+ Hotstar
+35+,More than 2 years,Premium,More than ₹1000,Daily,10,5,Excellent value,Very unlikely,No changes,Yes, with family,No, satisfied with current,Yes, definitely,Annual payment,Netflix
+18-35,Less than 1 month,Basic,Less than ₹200,Rarely,2,1,Poor value,Very likely,Yes, switched completely,Yes, with friends,Yes, actively considering,No, prefer separate,Pay as you go,Sony LIV
+Under 18,1-2 years,Standard,₹200 - ₹500,Often,6,3,Average,Not sure,No changes,No, only I use it,Yes, but not seriously,Maybe, depends on price,Monthly auto-renewal,Jio Cinema
+35+,3-6 months,Premium,₹501 - ₹1000,Daily,9,5,Excellent value,Very unlikely,Yes, added new one but kept old,Yes, with family,No, satisfied with current,Yes, definitely,Annual payment,YouTube Premium
+18-35,6-12 months,Basic,Less than ₹200,Rarely,4,2,Poor value,Very likely,Yes, dropped one but kept others,No, only I use it,Yes, actively considering,No, prefer separate,Pay as you go,Netflix
+35+,1-3 months,Standard,₹200 - ₹500,Often,7,4,Good value,Not sure,No changes,Yes, with family,Yes, but not seriously,Maybe, depends on price,Monthly auto-renewal,Amazon Prime Video
+18-35,More than 2 years,Premium,More than ₹1000,Daily,10,5,Excellent value,Very unlikely,No changes,Yes, with family,No, satisfied with current,Yes, definitely,Annual payment,Disney+ Hotstar
+Under 18,Less than 1 month,Basic,Less than ₹200,Rarely,3,2,Poor value,Very likely,Yes, switched completely,No, only I use it,Yes, actively considering,No, prefer separate,Pay as you go,Netflix
+35+,1-2 years,Standard,₹200 - ₹500,Often,8,4,Good value,Not sure,Yes, added new one but kept old,Yes, with friends,Yes, but not seriously,Maybe, depends on price,Monthly auto-renewal,Sony LIV
+18-35,3-6 months,Premium,₹501 - ₹1000,Daily,9,5,Excellent value,Very unlikely,No changes,Yes, with family,No, satisfied with current,Yes, definitely,Annual payment,Jio Cinema
+35+,6-12 months,Basic,Less than ₹200,Rarely,5,3,Poor value,Very likely,Yes, dropped one but kept others,No, only I use it,Yes, actively considering,No, prefer separate,Pay as you go,YouTube Premium
+18-35,1-3 months,Standard,₹200 - ₹500,Often,7,3,Average,Not sure,No changes,Yes, with family,Yes, but not seriously,Maybe, depends on price,Monthly auto-renewal,Netflix
+Under 18,More than 2 years,Premium,More than ₹1000,Daily,10,5,Excellent value,Very unlikely,No changes,Yes, with family,No, satisfied with current,Yes, definitely,Annual payment,Amazon Prime Video
+35+,Less than 1 month,Basic,Less than ₹200,Rarely,2,1,Poor value,Very likely,Yes, switched completely,Yes, with friends,Yes, actively considering,No, prefer separate,Pay as you go,Disney+ Hotstar
+18-35,1-2 years,Standard,₹200 - ₹500,Often,8,4,Good value,Not sure,No changes,No, only I use it,Yes, but not seriously,Maybe, depends on price,Monthly auto-renewal,Netflix
+35+,3-6 months,Premium,₹501 - ₹1000,Daily,9,5,Excellent value,Very unlikely,Yes, added new one but kept old,Yes, with family,No, satisfied with current,Yes, definitely,Annual payment,Sony LIV
+18-35,6-12 months,Basic,Less than ₹200,Rarely,4,2,Poor value,Very likely,Yes, dropped one but kept others,No, only I use it,Yes, actively considering,No, prefer separate,Pay as you go,Jio Cinema
+Under 18,1-3 months,Standard,₹200 - ₹500,Often,6,3,Average,Not sure,No changes,Yes, with family,Yes, but not seriously,Maybe, depends on price,Monthly auto-renewal,YouTube Premium
+35+,More than 2 years,Premium,More than ₹1000,Daily,10,5,Excellent value,Very unlikely,No changes,Yes, with family,No, satisfied with current,Yes, definitely,Annual payment,Netflix
+18-35,Less than 1 month,Basic,Less than ₹200,Rarely,3,2,Poor value,Very likely,Yes, switched completely,No, only I use it,Yes, actively considering,No, prefer separate,Pay as you go,Amazon Prime Video
+35+,1-2 years,Standard,₹200 - ₹500,Often,7,4,Good value,Not sure,Yes, added new one but kept old,Yes, with friends,Yes, but not seriously,Maybe, depends on price,Monthly auto-renewal,Disney+ Hotstar
+18-35,3-6 months,Premium,₹501 - ₹1000,Daily,9,5,Excellent value,Very unlikely,No changes,Yes, with family,No, satisfied with current,Yes, definitely,Annual payment,Netflix
+Under 18,6-12 months,Basic,Less than ₹200,Rarely,5,3,Poor value,Very likely,Yes, dropped one but kept others,No, only I use it,Yes, actively considering,No, prefer separate,Pay as you go,Sony LIV
+35+,1-3 months,Standard,₹200 - ₹500,Often,8,4,Good value,Not sure,No changes,Yes, with family,Yes, but not seriously,Maybe, depends on price,Monthly auto-renewal,Jio Cinema
+18-35,More than 2 years,Premium,More than ₹1000,Daily,10,5,Excellent value,Very unlikely,No changes,Yes, with family,No, satisfied with current,Yes, definitely,Annual payment,YouTube Premium
+35+,Less than 1 month,Basic,Less than ₹200,Rarely,2,1,Poor value,Very likely,Yes, switched completely,Yes, with friends,Yes, actively considering,No, prefer separate,Pay as you go,Netflix
+18-35,1-2 years,Standard,₹200 - ₹500,Often,7,3,Average,Not sure,No changes,No, only I use it,Yes, but not seriously,Maybe, depends on price,Monthly auto-renewal,Amazon Prime Video
+Under 18,3-6 months,Premium,₹501 - ₹1000,Daily,9,5,Excellent value,Very unlikely,Yes, added new one but kept old,Yes, with family,No, satisfied with current,Yes, definitely,Annual payment,Disney+ Hotstar
+35+,6-12 months,Basic,Less than ₹200,Rarely,4,2,Poor value,Very likely,Yes, dropped one but kept others,No, only I use it,Yes, actively considering,No, prefer separate,Pay as you go,Netflix
+18-35,1-3 months,Standard,₹200 - ₹500,Often,8,4,Good value,Not sure,No changes,Yes, with family,Yes, but not seriously,Maybe, depends on price,Monthly auto-renewal,Sony LIV
+35+,More than 2 years,Premium,More than ₹1000,Daily,10,5,Excellent value,Very unlikely,No changes,Yes, with family,No, satisfied with current,Yes, definitely,Annual payment,Jio Cinema
+18-35,Less than 1 month,Basic,Less than ₹200,Rarely,3,2,Poor value,Very likely,Yes, switched completely,No, only I use it,Yes, actively considering,No, prefer separate,Pay as you go,YouTube Premium
+Under 18,1-2 years,Standard,₹200 - ₹500,Often,6,3,Average,Not sure,Yes, added new one but kept old,Yes, with friends,Yes, but not seriously,Maybe, depends on price,Monthly auto-renewal,Netflix
+35+,3-6 months,Premium,₹501 - ₹1000,Daily,9,5,Excellent value,Very unlikely,No changes,Yes, with family,No, satisfied with current,Yes, definitely,Annual payment,Amazon Prime Video
+18-35,6-12 months,Basic,Less than ₹200,Rarely,5,3,Poor value,Very likely,Yes, dropped one but kept others,No, only I use it,Yes, actively considering,No, prefer separate,Pay as you go,Disney+ Hotstar
+35+,1-3 months,Standard,₹200 - ₹500,Often,7,4,Good value,Not sure,No changes,Yes, with family,Yes, but not seriously,Maybe, depends on price,Monthly auto-renewal,Netflix
+18-35,More than 2 years,Premium,More than ₹1000,Daily,10,5,Excellent value,Very unlikely,No changes,Yes, with family,No, satisfied with current,Yes, definitely,Annual payment,Sony LIV
+Under 18,Less than 1 month,Basic,Less than ₹200,Rarely,2,1,Poor value,Very likely,Yes, switched completely,Yes, with friends,Yes, actively considering,No, prefer separate,Pay as you go,Jio Cinema
+35+,1-2 years,Standard,₹200 - ₹500,Often,8,4,Good value,Not sure,No changes,No, only I use it,Yes, but not seriously,Maybe, depends on price,Monthly auto-renewal,YouTube Premium
+18-35,3-6 months,Premium,₹501 - ₹1000,Daily,9,5,Excellent value,Very unlikely,Yes, added new one but kept old,Yes, with family,No, satisfied with current,Yes, definitely,Annual payment,Netflix
+35+,6-12 months,Basic,Less than ₹200,Rarely,4,2,Poor value,Very likely,Yes, dropped one but kept others,No, only I use it,Yes, actively considering,No, prefer separate,Pay as you go,Amazon Prime Video
+18-35,1-3 months,Standard,₹200 - ₹500,Often,7,3,Average,Not sure,No changes,Yes, with family,Yes, but not seriously,Maybe, depends on price,Monthly auto-renewal,Disney+ Hotstar
+Under 18,More than 2 years,Premium,More than ₹1000,Daily,10,5,Excellent value,Very unlikely,No changes,Yes, with family,No, satisfied with current,Yes, definitely,Annual payment,Netflix
+35+,Less than 1 month,Basic,Less than ₹200,Rarely,3,2,Poor value,Very likely,Yes, switched completely,No, only I use it,Yes, actively considering,No, prefer separate,Pay as you go,Sony LIV
+18-35,1-2 years,Standard,₹200 - ₹500,Often,8,4,Good value,Not sure,Yes, added new one but kept old,Yes, with friends,Yes, but not seriously,Maybe, depends on price,Monthly auto-renewal,Jio Cinema
+35+,3-6 months,Premium,₹501 - ₹1000,Daily,9,5,Excellent value,Very unlikely,No changes,Yes, with family,No, satisfied with current,Yes, definitely,Annual payment,YouTube Premium
+18-35,6-12 months,Basic,Less than ₹200,Rarely,5,3,Poor value,Very likely,Yes, dropped one but kept others,No, only I use it,Yes, actively considering,No, prefer separate,Pay as you go,Netflix
+Under 18,1-3 months,Standard,₹200 - ₹500,Often,6,3,Average,Not sure,No changes,Yes, with family,Yes, but not seriously,Maybe, depends on price,Monthly auto-renewal,Amazon Prime Video
+35+,More than 2 years,Premium,More than ₹1000,Daily,10,5,Excellent value,Very unlikely,No changes,Yes, with family,No, satisfied with current,Yes, definitely,Annual payment,Disney+ Hotstar
+18-35,Less than 1 month,Basic,Less than ₹200,Rarely,2,1,Poor value,Very likely,Yes, switched completely,Yes, with friends,Yes, actively considering,No, prefer separate,Pay as you go,Netflix
+35+,1-2 years,Standard,₹200 - ₹500,Often,7,4,Good value,Not sure,No changes,No, only I use it,Yes, but not seriously,Maybe, depends on price,Monthly auto-renewal,Sony LIV
+18-35,3-6 months,Premium,₹501 - ₹1000,Daily,9,5,Excellent value,Very unlikely,Yes, added new one but kept old,Yes, with family,No, satisfied with current,Yes, definitely,Annual payment,Jio Cinema
+Under 18,6-12 months,Basic,Less than ₹200,Rarely,4,2,Poor value,Very likely,Yes, dropped one but kept others,No, only I use it,Yes, actively considering,No, prefer separate,Pay as you go,YouTube Premium
+35+,1-3 months,Standard,₹200 - ₹500,Often,8,4,Good value,Not sure,No changes,Yes, with family,Yes, but not seriously,Maybe, depends on price,Monthly auto-renewal,Netflix
+18-35,More than 2 years,Premium,More than ₹1000,Daily,10,5,Excellent value,Very unlikely,No changes,Yes, with family,No, satisfied with current,Yes, definitely,Annual payment,Amazon Prime Video
+35+,Less than 1 month,Basic,Less than ₹200,Rarely,3,2,Poor value,Very likely,Yes, switched completely,No, only I use it,Yes, actively considering,No, prefer separate,Pay as you go,Disney+ Hotstar
+18-35,1-2 years,Standard,₹200 - ₹500,Often,7,3,Average,Not sure,Yes, added new one but kept old,Yes, with friends,Yes, but not seriously,Maybe, depends on price,Monthly auto-renewal,Netflix
+Under 18,3-6 months,Premium,₹501 - ₹1000,Daily,9,5,Excellent value,Very unlikely,No changes,Yes, with family,No, satisfied with current,Yes, definitely,Annual payment,Sony LIV
+35+,6-12 months,Basic,Less than ₹200,Rarely,5,3,Poor value,Very likely,Yes, dropped one but kept others,No, only I use it,Yes, actively considering,No, prefer separate,Pay as you go,Jio Cinema
+18-35,1-3 months,Standard,₹200 - ₹500,Often,8,4,Good value,Not sure,No changes,Yes, with family,Yes, but not seriously,Maybe, depends on price,Monthly auto-renewal,YouTube Premium
+35+,More than 2 years,Premium,More than ₹1000,Daily,10,5,Excellent value,Very unlikely,No changes,Yes, with family,No, satisfied with current,Yes, definitely,Annual payment,Netflix
+18-35,Less than 1 month,Basic,Less than ₹200,Rarely,2,1,Poor value,Very likely,Yes, switched completely,Yes, with friends,Yes, actively considering,No, prefer separate,Pay as you go,Amazon Prime Video
+Under 18,1-2 years,Standard,₹200 - ₹500,Often,6,3,Average,Not sure,No changes,No, only I use it,Yes, but not seriously,Maybe, depends on price,Monthly auto-renewal,Disney+ Hotstar
+35+,3-6 months,Premium,₹501 - ₹1000,Daily,9,5,Excellent value,Very unlikely,Yes, added new one but kept old,Yes, with family,No, satisfied with current,Yes, definitely,Annual payment,Netflix
+18-35,6-12 months,Basic,Less than ₹200,Rarely,4,2,Poor value,Very likely,Yes, dropped one but kept others,No, only I use it,Yes, actively considering,No, prefer separate,Pay as you go,Sony LIV
+35+,1-3 months,Standard,₹200 - ₹500,Often,7,4,Good value,Not sure,No changes,Yes, with family,Yes, but not seriously,Maybe, depends on price,Monthly auto-renewal,Jio Cinema
+18-35,More than 2 years,Premium,More than ₹1000,Daily,10,5,Excellent value,Very unlikely,No changes,Yes, with family,No, satisfied with current,Yes, definitely,Annual payment,YouTube Premium
+Under 18,Less than 1 month,Basic,Less than ₹200,Rarely,3,2,Poor value,Very likely,Yes, switched completely,No, only I use it,Yes, actively considering,No, prefer separate,Pay as you go,Netflix
+35+,1-2 years,Standard,₹200 - ₹500,Often,8,4,Good value,Not sure,No changes,Yes, with friends,Yes, but not seriously,Maybe, depends on price,Monthly auto-renewal,Amazon Prime Video
+18-35,3-6 months,Premium,₹501 - ₹1000,Daily,9,5,Excellent value,Very unlikely,Yes, added new one but kept old,Yes, with family,No, satisfied with current,Yes, definitely,Annual payment,Disney+ Hotstar
+35+,6-12 months,Basic,Less than ₹200,Rarely,5,3,Poor value,Very likely,Yes, dropped one but kept others,No, only I use it,Yes, actively considering,No, prefer separate,Pay as you go,Netflix
+18-35,1-3 months,Standard,₹200 - ₹500,Often,7,3,Average,Not sure,No changes,Yes, with family,Yes, but not seriously,Maybe, depends on price,Monthly auto-renewal,Sony LIV
+Under 18,More than 2 years,Premium,More than ₹1000,Daily,10,5,Excellent value,Very unlikely,No changes,Yes, with family,No, satisfied with current,Yes, definitely,Annual payment,Jio Cinema
+35+,Less than 1 month,Basic,Less than ₹200,Rarely,2,1,Poor value,Very likely,Yes, switched completely,Yes, with friends,Yes, actively considering,No, prefer separate,Pay as you go,YouTube Premium
+18-35,1-2 years,Standard,₹200 - ₹500,Often,8,4,Good value,Not sure,No changes,No, only I use it,Yes, but not seriously,Maybe, depends on price,Monthly auto-renewal,Netflix
+35+,3-6 months,Premium,₹501 - ₹1000,Daily,9,5,Excellent value,Very unlikely,No changes,Yes, with family,No, satisfied with current,Yes, definitely,Annual payment,Amazon Prime Video
+18-35,6-12 months,Basic,Less than ₹200,Rarely,4,2,Poor value,Very likely,Yes, dropped one but kept others,No, only I use it,Yes, actively considering,No, prefer separate,Pay as you go,Disney+ Hotstar
+Under 18,1-3 months,Standard,₹200 - ₹500,Often,6,3,Average,Not sure,Yes, added new one but kept old,Yes, with friends,Yes, but not seriously,Maybe, depends on price,Monthly auto-renewal,Netflix
+35+,More than 2 years,Premium,More than ₹1000,Daily,10,5,Excellent value,Very unlikely,No changes,Yes, with family,No, satisfied with current,Yes, definitely,Annual payment,Sony LIV
+18-35,Less than 1 month,Basic,Less than ₹200,Rarely,3,2,Poor value,Very likely,Yes, switched completely,No, only I use it,Yes, actively considering,No, prefer separate,Pay as you go,Jio Cinema
+35+,1-2 years,Standard,₹200 - ₹500,Often,7,4,Good value,Not sure,No changes,Yes, with family,Yes, but not seriously,Maybe, depends on price,Monthly auto-renewal,YouTube Premium
+18-35,3-6 months,Premium,₹501 - ₹1000,Daily,9,5,Excellent value,Very unlikely,Yes, added new one but kept old,Yes, with family,No, satisfied with current,Yes, definitely,Annual payment,Netflix
+Under 18,6-12 months,Basic,Less than ₹200,Rarely,5,3,Poor value,Very likely,Yes, dropped one but kept others,No, only I use it,Yes, actively considering,No, prefer separate,Pay as you go,Amazon Prime Video
+35+,1-3 months,Standard,₹200 - ₹500,Often,8,4,Good value,Not sure,No changes,Yes, with family,Yes, but not seriously,Maybe, depends on price,Monthly auto-renewal,Disney+ Hotstar
+18-35,More than 2 years,Premium,More than ₹1000,Daily,10,5,Excellent value,Very unlikely,No changes,Yes, with family,No, satisfied with current,Yes, definitely,Annual payment,Netflix
+35+,Less than 1 month,Basic,Less than ₹200,Rarely,2,1,Poor value,Very likely,Yes, switched completely,Yes, with friends,Yes, actively considering,No, prefer separate,Pay as you go,Sony LIV
+18-35,1-2 years,Standard,₹200 - ₹500,Often,7,3,Average,Not sure,No changes,No, only I use it,Yes, but not seriously,Maybe, depends on price,Monthly auto-renewal,Jio Cinema
+Under 18,3-6 months,Premium,₹501 - ₹1000,Daily,9,5,Excellent value,Very unlikely,No changes,Yes, with family,No, satisfied with current,Yes, definitely,Annual payment,YouTube Premium
+35+,6-12 months,Basic,Less than ₹200,Rarely,4,2,Poor value,Very likely,Yes, dropped one but kept others,No, only I use it,Yes, actively considering,No, prefer separate,Pay as you go,Netflix
+18-35,1-3 months,Standard,₹200 - ₹500,Often,8,4,Good value,Not sure,Yes, added new one but kept old,Yes, with friends,Yes, but not seriously,Maybe, depends on price,Monthly auto-renewal,Amazon Prime Video
+35+,More than 2 years,Premium,More than ₹1000,Daily,10,5,Excellent value,Very unlikely,No changes,Yes, with family,No, satisfied with current,Yes, definitely,Annual payment,Disney+ Hotstar
+18-35,Less than 1 month,Basic,Less than ₹200,Rarely,3,2,Poor value,Very likely,Yes, switched completely,No, only I use it,Yes, actively considering,No, prefer separate,Pay as you go,Netflix
+Under 18,1-2 years,Standard,₹200 - ₹500,Often,6,3,Average,Not sure,No changes,Yes, with family,Yes, but not seriously,Maybe, depends on price,Monthly auto-renewal,Sony LIV
+35+,3-6 months,Premium,₹501 - ₹1000,Daily,9,5,Excellent value,Very unlikely,Yes, added new one but kept old,Yes, with family,No, satisfied with current,Yes, definitely,Annual payment,Jio Cinema
+18-35,6-12 months,Basic,Less than ₹200,Rarely,5,3,Poor value,Very likely,Yes, dropped one but kept others,No, only I use it,Yes, actively considering,No, prefer separate,Pay as you go,YouTube Premium
+35+,1-3 months,Standard,₹200 - ₹500,Often,7,4,Good value,Not sure,No changes,Yes, with family,Yes, but not seriously,Maybe, depends on price,Monthly auto-renewal,Netflix
+18-35,More than 2 years,Premium,More than ₹1000,Daily,10,5,Excellent value,Very unlikely,No changes,Yes, with family,No, satisfied with current,Yes, definitely,Annual payment,Amazon Prime Video
+Under 18,Less than 1 month,Basic,Less than ₹200,Rarely,2,1,Poor value,Very likely,Yes, switched completely,Yes, with friends,Yes, actively considering,No, prefer separate,Pay as you go,Disney+ Hotstar
+35+,1-2 years,Standard,₹200 - ₹500,Often,8,4,Good value,Not sure,No changes,No, only I use it,Yes, but not seriously,Maybe, depends on price,Monthly auto-renewal,Netflix
+18-35,3-6 months,Premium,₹501 - ₹1000,Daily,9,5,Excellent value,Very unlikely,No changes,Yes, with family,No, satisfied with current,Yes, definitely,Annual payment,Sony LIV
+35+,6-12 months,Basic,Less than ₹200,Rarely,4,2,Poor value,Very likely,Yes, dropped one but kept others,No, only I use it,Yes, actively considering,No, prefer separate,Pay as you go,Jio Cinema
+18-35,1-3 months,Standard,₹200 - ₹500,Often,7,3,Average,Not sure,Yes, added new one but kept old,Yes, with friends,Yes, but not seriously,Maybe, depends on price,Monthly auto-renewal,YouTube Premium
+Under 18,More than 2 years,Premium,More than ₹1000,Daily,10,5,Excellent value,Very unlikely,No changes,Yes, with family,No, satisfied with current,Yes, definitely,Annual payment,Netflix
+35+,Less than 1 month,Basic,Less than ₹200,Rarely,3,2,Poor value,Very likely,Yes, switched completely,No, only I use it,Yes, actively considering,No, prefer separate,Pay as you go,Amazon Prime Video
+18-35,1-2 years,Standard,₹200 - ₹500,Often,8,4,Good value,Not sure,No changes,Yes, with family,Yes, but not seriously,Maybe, depends on price,Monthly auto-renewal,Disney+ Hotstar
+35+,3-6 months,Premium,₹501 - ₹1000,Daily,9,5,Excellent value,Very unlikely,Yes, added new one but kept old,Yes, with family,No, satisfied with current,Yes, definitely,Annual payment,Netflix
+18-35,6-12 months,Basic,Less than ₹200,Rarely,5,3,Poor value,Very likely,Yes, dropped one but kept others,No, only I use it,Yes, actively considering,No, prefer separate,Pay as you go,Sony LIV
+Under 18,1-3 months,Standard,₹200 - ₹500,Often,6,3,Average,Not sure,No changes,Yes, with family,Yes, but not seriously,Maybe, depends on price,Monthly auto-renewal,Jio Cinema
+35+,More than 2 years,Premium,More than ₹1000,Daily,10,5,Excellent value,Very unlikely,No changes,Yes, with family,No, satisfied with current,Yes, definitely,Annual payment,YouTube Premium
+18-35,Less than 1 month,Basic,Less than ₹200,Rarely,2,1,Poor value,Very likely,Yes, switched completely,Yes, with friends,Yes, actively considering,No, prefer separate,Pay as you go,Netflix
+35+,1-2 years,Standard,₹200 - ₹500,Often,7,4,Good value,Not sure,No changes,No, only I use it,Yes, but not seriously,Maybe, depends on price,Monthly auto-renewal,Amazon Prime Video
+18-35,3-6 months,Premium,₹501 - ₹1000,Daily,9,5,Excellent value,Very unlikely,No changes,Yes, with family,No, satisfied with current,Yes, definitely,Annual payment,Disney+ Hotstar
+Under 18,6-12 months,Basic,Less than ₹200,Rarely,4,2,Poor value,Very likely,Yes, dropped one but kept others,No, only I use it,Yes, actively considering,No, prefer separate,Pay as you go,Netflix
+35+,1-3 months,Standard,₹200 - ₹500,Often,8,4,Good value,Not sure,Yes, added new one but kept old,Yes, with friends,Yes, but not seriously,Maybe, depends on price,Monthly auto-renewal,Sony LIV
+18-35,More than 2 years,Premium,More than ₹1000,Daily,10,5,Excellent value,Very unlikely,No changes,Yes, with family,No, satisfied with current,Yes, definitely,Annual payment,Jio Cinema
+35+,Less than 1 month,Basic,Less than ₹200,Rarely,3,2,Poor value,Very likely,Yes, switched completely,No, only I use it,Yes, actively considering,No, prefer separate,Pay as you go,YouTube Premium
+18-35,1-2 years,Standard,₹200 - ₹500,Often,7,3,Average,Not sure,No changes,Yes, with family,Yes, but not seriously,Maybe, depends on price,Monthly auto-renewal,Netflix
+Under 18,3-6 months,Premium,₹501 - ₹1000,Daily,9,5,Excellent value,Very unlikely,Yes, added new one but kept old,Yes, with family,No, satisfied with current,Yes, definitely,Annual payment,Amazon Prime Video
+35+,6-12 months,Basic,Less than ₹200,Rarely,5,3,Poor value,Very likely,Yes, dropped one but kept others,No, only I use it,Yes, actively considering,No, prefer separate,Pay as you go,Disney+ Hotstar
+18-35,1-3 months,Standard,₹200 - ₹500,Often,8,4,Good value,Not sure,No changes,Yes, with family,Yes, but not seriously,Maybe, depends on price,Monthly auto-renewal,Netflix
+35+,More than 2 years,Premium,More than ₹1000,Daily,10,5,Excellent value,Very unlikely,No changes,Yes, with family,No, satisfied with current,Yes, definitely,Annual payment,Sony LIV
+18-35,Less than 1 month,Basic,Less than ₹200,Rarely,2,1,Poor value,Very likely,Yes, switched completely,Yes, with friends,Yes, actively considering,No, prefer separate,Pay as you go,Jio Cinema
+Under 18,1-2 years,Standard,₹200 - ₹500,Often,6,3,Average,Not sure,No changes,No, only I use it,Yes, but not seriously,Maybe, depends on price,Monthly auto-renewal,YouTube Premium
+35+,3-6 months,Premium,₹501 - ₹1000,Daily,9,5,Excellent value,Very unlikely,No changes,Yes, with family,No, satisfied with current,Yes, definitely,Annual payment,Netflix
+18-35,6-12 months,Basic,Less than ₹200,Rarely,4,2,Poor value,Very likely,Yes, dropped one but kept others,No, only I use it,Yes, actively considering,No, prefer separate,Pay as you go,Amazon Prime Video
+35+,1-3 months,Standard,₹200 - ₹500,Often,7,4,Good value,Not sure,Yes, added new one but kept old,Yes, with friends,Yes, but not seriously,Maybe, depends on price,Monthly auto-renewal,Disney+ Hotstar
+18-35,More than 2 years,Premium,More than ₹1000,Daily,10,5,Excellent value,Very unlikely,No changes,Yes, with family,No, satisfied with current,Yes, definitely,Annual payment,Netflix
+Under 18,Less than 1 month,Basic,Less than ₹200,Rarely,3,2,Poor value,Very likely,Yes, switched completely,No, only I use it,Yes, actively considering,No, prefer separate,Pay as you go,Sony LIV
+35+,1-2 years,Standard,₹200 - ₹500,Often,8,4,Good value,Not sure,No changes,Yes, with family,Yes, but not seriously,Maybe, depends on price,Monthly auto-renewal,Jio Cinema
+18-35,3-6 months,Premium,₹501 - ₹1000,Daily,9,5,Excellent value,Very unlikely,Yes, added new one but kept old,Yes, with family,No, satisfied with current,Yes, definitely,Annual payment,YouTube Premium
+35+,6-12 months,Basic,Less than ₹200,Rarely,5,3,Poor value,Very likely,Yes, dropped one but kept others,No, only I use it,Yes, actively considering,No, prefer separate,Pay as you go,Netflix
+18-35,1-3 months,Standard,₹200 - ₹500,Often,7,3,Average,Not sure,No changes,Yes, with family,Yes, but not seriously,Maybe, depends on price,Monthly auto-renewal,Amazon Prime Video
+Under 18,More than 2 years,Premium,More than ₹1000,Daily,10,5,Excellent value,Very unlikely,No changes,Yes, with family,No, satisfied with current,Yes, definitely,Annual payment,Disney+ Hotstar
+35+,Less than 1 month,Basic,Less than ₹200,Rarely,2,1,Poor value,Very likely,Yes, switched completely,Yes, with friends,Yes, actively considering,No, prefer separate,Pay as you go,Netflix
+18-35,1-2 years,Standard,₹200 - ₹500,Often,8,4,Good value,Not sure,No changes,No, only I use it,Yes, but not seriously,Maybe, depends on price,Monthly auto-renewal,Sony LIV
+35+,3-6 months,Premium,₹501 - ₹1000,Daily,9,5,Excellent value,Very unlikely,No changes,Yes, with family,No, satisfied with current,Yes, definitely,Annual payment,Jio Cinema
+18-35,6-12 months,Basic,Less than ₹200,Rarely,4,2,Poor value,Very likely,Yes, dropped one but kept others,No, only I use it,Yes, actively considering,No, prefer separate,Pay as you go,YouTube Premium
+Under 18,1-3 months,Standard,₹200 - ₹500,Often,6,3,Average,Not sure,Yes, added new one but kept old,Yes, with friends,Yes, but not seriously,Maybe, depends on price,Monthly auto-renewal,Netflix
+35+,More than 2 years,Premium,More than ₹1000,Daily,10,5,Excellent value,Very unlikely,No changes,Yes, with family,No, satisfied with current,Yes, definitely,Annual payment,Amazon Prime Video
+18-35,Less than 1 month,Basic,Less than ₹200,Rarely,3,2,Poor value,Very likely,Yes, switched completely,No, only I use it,Yes, actively considering,No, prefer separate,Pay as you go,Disney+ Hotstar
+35+,1-2 years,Standard,₹200 - ₹500,Often,7,4,Good value,Not sure,No changes,Yes, with family,Yes, but not seriously,Maybe, depends on price,Monthly auto-renewal,Netflix
+18-35,3-6 months,Premium,₹501 - ₹1000,Daily,9,5,Excellent value,Very unlikely,Yes, added new one but kept old,Yes, with family,No, satisfied with current,Yes, definitely,Annual payment,Sony LIV
+Under 18,6-12 months,Basic,Less than ₹200,Rarely,5,3,Poor value,Very likely,Yes, dropped one but kept others,No, only I use it,Yes, actively considering,No, prefer separate,Pay as you go,Jio Cinema
+35+,1-3 months,Standard,₹200 - ₹500,Often,8,4,Good value,Not sure,No changes,Yes, with family,Yes, but not seriously,Maybe, depends on price,Monthly auto-renewal,YouTube Premium
+18-35,More than 2 years,Premium,More than ₹1000,Daily,10,5,Excellent value,Very unlikely,No changes,Yes, with family,No, satisfied with current,Yes, definitely,Annual payment,Netflix

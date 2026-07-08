@@ -1,0 +1,825 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>RetainX | Analytics</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <style>
+        .analytics-container {
+            min-height: 100vh;
+            background: linear-gradient(135deg, #FFFFFB 0%, #C8D9EE 100%);
+            padding-top: 70px;
+        }
+
+        .page-header {
+            background: linear-gradient(135deg, #2F4156 0%, #567C8D 100%);
+            color: #FFFFFB;
+            padding: 3rem 0;
+            text-align: center;
+        }
+
+        .page-header h1 {
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+        }
+
+        .page-header p {
+            font-size: 1.1rem;
+            opacity: 0.9;
+            max-width: 600px;
+            margin: 0 auto;
+            color: #F5FEBB;
+        }
+
+        .main-content {
+            padding: 2rem 0;
+        }
+
+        .section-title {
+            font-size: 1.8rem;
+            color: #2F4156;
+            margin-bottom: 2rem;
+            text-align: center;
+            position: relative;
+            padding-bottom: 1rem;
+        }
+
+        .section-title::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 60px;
+            height: 3px;
+            background: linear-gradient(135deg, #567C8D 0%, #2F4156 100%);
+            border-radius: 2px;
+        }
+
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 1.5rem;
+            margin-bottom: 3rem;
+        }
+
+        .stat-card {
+            background: #FFFFFB;
+            padding: 1.5rem;
+            border-radius: 10px;
+            box-shadow: 0 2px 10px rgba(47, 65, 86, 0.05);
+            text-align: center;
+            border: 1px solid #C8D9EE;
+            transition: all 0.3s ease;
+        }
+
+        .stat-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 20px rgba(86, 124, 141, 0.1);
+            border-color: #567C8D;
+        }
+
+        .stat-icon {
+            font-size: 2.5rem;
+            color: #567C8D;
+            margin-bottom: 1rem;
+        }
+
+        .stat-value {
+            font-size: 2rem;
+            font-weight: bold;
+            color: #2F4156;
+            margin-bottom: 0.5rem;
+        }
+
+        .stat-label {
+            color: #567C8D;
+            font-size: 0.9rem;
+        }
+
+        .charts-container {
+            background: #FFFFFB;
+            padding: 2rem;
+            border-radius: 10px;
+            box-shadow: 0 2px 10px rgba(47, 65, 86, 0.05);
+            margin-bottom: 3rem;
+            border: 1px solid #C8D9EE;
+        }
+
+        .chart-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 1.5rem;
+            padding-bottom: 1rem;
+            border-bottom: 2px solid #C8D9EE;
+        }
+
+        .chart-header h3 {
+            color: #2F4156;
+            margin: 0;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .chart-header h3 i {
+            color: #567C8D;
+        }
+
+        .chart-container {
+            height: 350px;
+            position: relative;
+        }
+
+        .algorithm-badge {
+            background: #edf2f7;
+            padding: 0.5rem 1rem;
+            border-radius: 20px;
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            font-size: 0.85rem;
+            color: #4a5568;
+            margin-bottom: 1rem;
+        }
+
+        .insights-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 1.5rem;
+            margin-bottom: 3rem;
+        }
+
+        .insight-card {
+            background: #FFFFFB;
+            padding: 1.5rem;
+            border-radius: 10px;
+            box-shadow: 0 2px 10px rgba(47, 65, 86, 0.05);
+            border: 1px solid #C8D9EE;
+            transition: all 0.3s ease;
+        }
+
+        .insight-card h3 {
+            color: #2F4156;
+            margin-bottom: 1rem;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            padding-bottom: 0.5rem;
+            border-bottom: 2px solid #C8D9EE;
+        }
+
+        .insight-card h3 i {
+            color: #567C8D;
+        }
+
+        .insight-list {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+        }
+
+        .insight-list li {
+            padding: 0.8rem 0;
+            border-bottom: 1px solid rgba(200, 217, 238, 0.5);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .factor-name {
+            color: #567C8D;
+            font-weight: 500;
+        }
+
+        .factor-impact {
+            background: linear-gradient(135deg, #567C8D 0%, #2F4156 100%);
+            color: #FFFFFB;
+            padding: 0.3rem 0.8rem;
+            border-radius: 50px;
+            font-size: 0.9rem;
+            font-weight: 600;
+            min-width: 100px;
+            text-align: center;
+        }
+
+        .data-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 1rem;
+        }
+
+        .data-table th {
+            background: linear-gradient(135deg, #2F4156 0%, #567C8D 100%);
+            color: #FFFFFB;
+            padding: 0.8rem;
+            text-align: left;
+        }
+
+        .data-table td {
+            padding: 0.8rem;
+            border-bottom: 1px solid #C8D9EE;
+            color: #4a5568;
+        }
+
+        .loading {
+            text-align: center;
+            padding: 2rem;
+        }
+
+        .loading-spinner {
+            width: 40px;
+            height: 40px;
+            border: 3px solid #C8D9EE;
+            border-top-color: #567C8D;
+            border-radius: 50%;
+            animation: spin 1s linear infinite;
+            margin: 0 auto 1rem;
+        }
+
+        @keyframes spin {
+            to { transform: rotate(360deg); }
+        }
+
+        /* User Dropdown Styles */
+        .user-dropdown {
+            position: relative;
+            display: inline-block;
+        }
+
+        .user-dropdown-btn {
+            background: none;
+            border: none;
+            color: #FFFFFB;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            padding: 0.4rem 0.8rem;
+            border-radius: 4px;
+            cursor: pointer;
+            transition: all 0.3s;
+            font-size: 0.95rem;
+        }
+
+        .user-dropdown-btn:hover {
+            background-color: rgba(86, 124, 141, 0.3);
+            color: #F5FEBB;
+        }
+
+        .user-dropdown-content {
+            display: none;
+            position: absolute;
+            right: 0;
+            top: 100%;
+            background: #FFFFFB;
+            min-width: 250px;
+            box-shadow: 0 8px 16px rgba(0,0,0,0.1);
+            border-radius: 8px;
+            z-index: 1000;
+            border: 1px solid #C8D9EE;
+            margin-top: 0.5rem;
+        }
+
+        .user-dropdown-content.show {
+            display: block;
+        }
+
+        .user-info {
+            padding: 1rem;
+            border-bottom: 1px solid #C8D9EE;
+            text-align: center;
+        }
+
+        .user-avatar-dropdown {
+            width: 50px;
+            height: 50px;
+            background: linear-gradient(135deg, #567C8D 0%, #2F4156 100%);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 0.8rem;
+            font-size: 1.5rem;
+            color: #FFFFFB;
+        }
+
+        .user-name-dropdown {
+            font-weight: bold;
+            color: #2F4156;
+            margin-bottom: 0.3rem;
+        }
+
+        .user-email-dropdown {
+            font-size: 0.8rem;
+            color: #567C8D;
+        }
+
+        .dropdown-divider {
+            height: 1px;
+            background: #C8D9EE;
+            margin: 0.5rem 0;
+        }
+
+        .dropdown-item {
+            display: flex;
+            align-items: center;
+            gap: 0.8rem;
+            padding: 0.8rem 1rem;
+            color: #2F4156;
+            text-decoration: none;
+            transition: all 0.3s;
+            cursor: pointer;
+        }
+
+        .dropdown-item:hover {
+            background: rgba(86, 124, 141, 0.1);
+        }
+
+        .dropdown-item.logout {
+            color: #e53e3e;
+        }
+
+        .dropdown-item.logout:hover {
+            background: rgba(229, 62, 62, 0.1);
+        }
+
+        .navbar {
+            background: linear-gradient(135deg, #2F4156 0%, #567C8D 100%);
+            color: #FFFFFB;
+            padding: 1rem 0;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            z-index: 1000;
+        }
+
+        .navbar .container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 2rem;
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            font-size: 1.2rem;
+            font-weight: bold;
+            color: #FFFFFB;
+            text-decoration: none;
+        }
+
+        .nav-links {
+            display: flex;
+            list-style: none;
+            gap: 1rem;
+            margin: 0;
+            padding: 0;
+            align-items: center;
+        }
+
+        .nav-links li a {
+            color: #FFFFFB;
+            text-decoration: none;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            padding: 0.5rem 1rem;
+            border-radius: 8px;
+        }
+
+        .nav-links li a:hover,
+        .nav-links li a.active {
+            background: rgba(245, 254, 187, 0.2);
+            color: #F5FEBB;
+        }
+
+        .menu-toggle {
+            display: none;
+            background: none;
+            border: none;
+            color: #FFFFFB;
+            font-size: 1.5rem;
+            cursor: pointer;
+        }
+
+        footer {
+            background: #2F4156;
+            color: #FFFFFB;
+            padding: 2rem 0;
+            margin-top: 2rem;
+        }
+
+        .footer-content {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 1rem;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 2rem;
+        }
+
+        @media (max-width: 768px) {
+            .analytics-container {
+                padding-top: 60px;
+            }
+            .menu-toggle {
+                display: block;
+            }
+            .nav-links {
+                display: none;
+                position: absolute;
+                top: 100%;
+                left: 0;
+                width: 100%;
+                background: linear-gradient(135deg, #2F4156 0%, #567C8D 100%);
+                flex-direction: column;
+                padding: 1rem;
+            }
+            .nav-links.show {
+                display: flex;
+            }
+            .insights-grid {
+                grid-template-columns: 1fr;
+            }
+            .chart-header {
+                flex-direction: column;
+                align-items: flex-start;
+                gap: 1rem;
+            }
+            .user-dropdown-content {
+                position: fixed;
+                left: 0;
+                right: 0;
+                bottom: 0;
+                top: auto;
+                width: 100%;
+                border-radius: 20px 20px 0 0;
+            }
+        }
+    </style>
+</head>
+<body>
+    <nav class="navbar">
+        <div class="container">
+            <a href="index.html" class="logo">
+                <i class="fas fa-chart-line"></i>
+                <span>RetainX</span>
+            </a>
+
+            <button class="menu-toggle" id="menuToggle">
+                <i class="fas fa-bars"></i>
+            </button>
+
+            <ul class="nav-links" id="navLinks">
+                <li><a href="index.html">Home</a></li>
+                <li><a href="dashboard.html">Dashboard</a></li>
+                <li><a href="data-input.html">Data Input</a></li>
+                <li><a href="analysis.html">Analytics</a></li>
+                <li><a href="reports.html">Reports</a></li>
+                <li><a href="model-performance.html">Model</a></li>
+                <li><a href="retention.html">Retention</a></li>
+                <li class="user-dropdown" id="userDropdown">
+                    <button class="user-dropdown-btn" id="userDropdownBtn">
+                        <i class="fas fa-user-circle"></i>
+                        <span id="userNameNav">Account</span>
+                        <i class="fas fa-chevron-down"></i>
+                    </button>
+                    <div class="user-dropdown-content" id="userDropdownContent">
+                        <div class="user-info">
+                            <div class="user-avatar-dropdown">
+                                <i class="fas fa-user"></i>
+                            </div>
+                            <div class="user-name-dropdown" id="dropdownUserName">User</div>
+                            <div class="user-email-dropdown" id="dropdownUserEmail">user@example.com</div>
+                        </div>
+                        <div class="dropdown-divider"></div>
+                        <div class="dropdown-item logout" id="logoutDropdownBtn">
+                            <i class="fas fa-sign-out-alt"></i>
+                            <span>Logout</span>
+                        </div>
+                    </div>
+                </li>
+            </ul>
+        </div>
+    </nav>
+
+    <div class="analytics-container">
+        <div class="page-header">
+            <div class="container">
+                <h1><i class="fas fa-chart-line"></i> Analytics Dashboard</h1>
+                <p>Logistic Regression based churn analysis and insights</p>
+            </div>
+        </div>
+
+        <div class="container main-content">
+            <div class="algorithm-badge">
+                <i class="fas fa-brain"></i> 
+                <strong>Algorithm:</strong> Logistic Regression
+            </div>
+
+            <div id="loadingState" class="loading">
+                <div class="loading-spinner"></div>
+                <p>Loading analytics data...</p>
+            </div>
+
+            <div id="mainContent" style="display: none;">
+                <div class="stats-grid">
+                    <div class="stat-card">
+                        <div class="stat-icon"><i class="fas fa-users"></i></div>
+                        <div class="stat-value" id="totalCustomers">0</div>
+                        <div class="stat-label">Total Customers</div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-icon"><i class="fas fa-exclamation-triangle"></i></div>
+                        <div class="stat-value" id="highRiskCustomers">0</div>
+                        <div class="stat-label">High Risk Customers</div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-icon"><i class="fas fa-chart-line"></i></div>
+                        <div class="stat-value" id="churnRate">0%</div>
+                        <div class="stat-label">Predicted Churn Rate</div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-icon"><i class="fas fa-smile"></i></div>
+                        <div class="stat-value" id="avgSatisfaction">0%</div>
+                        <div class="stat-label">Avg Satisfaction</div>
+                    </div>
+                </div>
+
+                <div class="charts-container">
+                    <div class="chart-header">
+                        <h3><i class="fas fa-chart-pie"></i> Risk Distribution (Logistic Regression)</h3>
+                    </div>
+                    <div class="chart-container">
+                        <canvas id="riskChart"></canvas>
+                    </div>
+                </div>
+
+                <div class="charts-container">
+                    <div class="chart-header">
+                        <h3><i class="fas fa-chart-bar"></i> Satisfaction Distribution</h3>
+                    </div>
+                    <div class="chart-container">
+                        <canvas id="satisfactionChart"></canvas>
+                    </div>
+                </div>
+
+                <div class="insights-grid">
+                    <div class="insight-card">
+                        <h3><i class="fas fa-chart-bar"></i> Age Group Analysis</h3>
+                        <table class="data-table" id="ageGroupTable">
+                            <thead><tr><th>Age Group</th><th>Count</th><th>Percentage</th></tr></thead>
+                            <tbody><tr><td colspan="3">Loading...</td></tr></tbody>
+                        </table>
+                    </div>
+                    <div class="insight-card">
+                        <h3><i class="fas fa-tag"></i> Plan Analysis</h3>
+                        <table class="data-table" id="planTable">
+                            <thead><tr><th>Plan</th><th>Count</th><th>Percentage</th></tr></thead>
+                            <tbody><tr><td colspan="3">Loading...</td></tr></tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-logo">
+                    <i class="fas fa-chart-line"></i>
+                    <span>RetainX</span>
+                </div>
+                <div class="footer-links">
+                    <a href="index.html">Home</a>
+                    <a href="dashboard.html">Dashboard</a>
+                    <a href="data-input.html">Data Input</a>
+                    <a href="analysis.html">Analytics</a>
+                </div>
+                <div class="footer-info">
+                    <p>Academic Project | OTT Platform Customer Churn Analysis</p>
+                    <p>© 2024 RetainX. All rights reserved.</p>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Check authentication
+        const token = localStorage.getItem('authToken');
+        const user = localStorage.getItem('user');
+        
+        if (!token) {
+            window.location.href = 'login.html';
+        }
+        
+        // Update user info in dropdown
+        function updateUserInfo() {
+            const token = localStorage.getItem('authToken');
+            const user = localStorage.getItem('user');
+            
+            if (token && user) {
+                try {
+                    const userData = JSON.parse(user);
+                    const userNameNav = document.getElementById('userNameNav');
+                    const dropdownUserName = document.getElementById('dropdownUserName');
+                    const dropdownUserEmail = document.getElementById('dropdownUserEmail');
+                    
+                    if (userNameNav) userNameNav.textContent = userData.name || 'User';
+                    if (dropdownUserName) dropdownUserName.textContent = userData.name || 'User';
+                    if (dropdownUserEmail) dropdownUserEmail.textContent = userData.email || 'user@example.com';
+                } catch(e) {
+                    console.log('Error parsing user data');
+                }
+            }
+        }
+        
+        updateUserInfo();
+        
+        // Mobile menu toggle
+        const menuToggle = document.getElementById('menuToggle');
+        const navLinks = document.getElementById('navLinks');
+        if (menuToggle && navLinks) {
+            menuToggle.addEventListener('click', () => navLinks.classList.toggle('show'));
+        }
+        
+        // User Dropdown Functionality
+        const userDropdownBtn = document.getElementById('userDropdownBtn');
+        const userDropdownContent = document.getElementById('userDropdownContent');
+        
+        if (userDropdownBtn && userDropdownContent) {
+            userDropdownBtn.addEventListener('click', function(e) {
+                e.stopPropagation();
+                userDropdownContent.classList.toggle('show');
+            });
+            
+            document.addEventListener('click', function(e) {
+                if (!userDropdownBtn.contains(e.target) && !userDropdownContent.contains(e.target)) {
+                    userDropdownContent.classList.remove('show');
+                }
+            });
+        }
+        
+        // Logout functionality
+        const logoutBtn = document.getElementById('logoutDropdownBtn');
+        if (logoutBtn) {
+            logoutBtn.addEventListener('click', function() {
+                localStorage.removeItem('authToken');
+                localStorage.removeItem('user');
+                localStorage.removeItem('isAuthenticated');
+                window.location.href = 'login.html';
+            });
+        }
+        
+        // Highlight current page in navbar
+        const currentPage = window.location.pathname.split('/').pop();
+        const navLinkItems = document.querySelectorAll('.nav-links a');
+        navLinkItems.forEach(link => {
+            const linkHref = link.getAttribute('href');
+            if (linkHref === currentPage || (currentPage === '' && linkHref === 'index.html')) {
+                link.classList.add('active');
+            }
+        });
+        
+        let riskChart, satisfactionChart;
+        
+        async function loadAnalytics() {
+            const loadingState = document.getElementById('loadingState');
+            const mainContent = document.getElementById('mainContent');
+            
+            loadingState.style.display = 'block';
+            mainContent.style.display = 'none';
+            
+            try {
+                const response = await fetch('http://localhost:5001/api/data/customers', {
+                    headers: { 'Authorization': `Bearer ${token}` }
+                });
+                const result = await response.json();
+                
+                if (result.success && result.data) {
+                    displayAnalytics(result.data);
+                }
+                loadingState.style.display = 'none';
+                mainContent.style.display = 'block';
+            } catch (error) {
+                console.error('Error loading analytics:', error);
+                loadSampleData();
+                loadingState.style.display = 'none';
+                mainContent.style.display = 'block';
+            }
+        }
+        
+        function displayAnalytics(customers) {
+            const total = customers.length;
+            const highRisk = customers.filter(c => c.churn_risk_category === 'High').length;
+            const churnRate = total > 0 ? ((highRisk / total) * 100).toFixed(1) : 0;
+            
+            // FIXED: Convert satisfaction strings to numbers
+            let satisfactionSum = 0;
+            let satisfactionCount = 0;
+            
+            customers.forEach(c => {
+                let sat = parseFloat(c.content_satisfaction);
+                if (!isNaN(sat) && sat >= 1 && sat <= 5) {
+                    satisfactionSum += sat;
+                    satisfactionCount++;
+                }
+            });
+            
+            const avgSatRaw = satisfactionCount > 0 ? satisfactionSum / satisfactionCount : 0;
+            const avgSatPercent = (avgSatRaw / 5) * 100;
+            
+            document.getElementById('totalCustomers').textContent = total;
+            document.getElementById('highRiskCustomers').textContent = highRisk;
+            document.getElementById('churnRate').textContent = churnRate + '%';
+            document.getElementById('avgSatisfaction').textContent = avgSatPercent.toFixed(2) + '%';
+            
+            const lowRisk = customers.filter(c => c.churn_risk_category === 'Low').length;
+            const mediumRisk = customers.filter(c => c.churn_risk_category === 'Medium').length;
+            
+            if (riskChart) riskChart.destroy();
+            const riskCtx = document.getElementById('riskChart').getContext('2d');
+            riskChart = new Chart(riskCtx, {
+                type: 'pie',
+                data: {
+                    labels: ['Low Risk', 'Medium Risk', 'High Risk'],
+                    datasets: [{ data: [lowRisk, mediumRisk, highRisk], backgroundColor: ['#48bb78', '#ed8936', '#e53e3e'] }]
+                },
+                options: { responsive: true, maintainAspectRatio: true }
+            });
+            
+            // FIXED: Convert satisfaction strings to numbers for distribution chart
+            const satData = [0, 0, 0, 0, 0];
+            customers.forEach(c => {
+                let sat = parseFloat(c.content_satisfaction);
+                if (!isNaN(sat) && sat >= 1 && sat <= 5) {
+                    satData[sat - 1]++;
+                } else if (c.content_satisfaction && !isNaN(parseFloat(c.content_satisfaction))) {
+                    let satVal = parseFloat(c.content_satisfaction);
+                    if (satVal >= 1 && satVal <= 5) satData[satVal - 1]++;
+                }
+            });
+            
+            if (satisfactionChart) satisfactionChart.destroy();
+            const satCtx = document.getElementById('satisfactionChart').getContext('2d');
+            satisfactionChart = new Chart(satCtx, {
+                type: 'bar',
+                data: {
+                    labels: ['1 (Very Low)', '2 (Low)', '3 (Neutral)', '4 (High)', '5 (Very High)'],
+                    datasets: [{ label: 'Customers', data: satData, backgroundColor: '#567C8D' }]
+                },
+                options: { responsive: true, maintainAspectRatio: true, scales: { y: { beginAtZero: true } } }
+            });
+            
+            const ageGroups = { '18-35': 0, '35+': 0, 'Under 18': 0 };
+            customers.forEach(c => { if (ageGroups[c.age_group] !== undefined) ageGroups[c.age_group]++; });
+            const ageTable = document.getElementById('ageGroupTable').querySelector('tbody');
+            ageTable.innerHTML = '';
+            for (const [group, count] of Object.entries(ageGroups)) {
+                const row = ageTable.insertRow();
+                row.insertCell(0).textContent = group;
+                row.insertCell(1).textContent = count;
+                row.insertCell(2).textContent = total > 0 ? ((count / total) * 100).toFixed(1) + '%' : '0%';
+            }
+            
+            const plans = { 'Basic': 0, 'Standard': 0, 'Premium': 0 };
+            customers.forEach(c => { if (plans[c.subscription_plan] !== undefined) plans[c.subscription_plan]++; });
+            const planTable = document.getElementById('planTable').querySelector('tbody');
+            planTable.innerHTML = '';
+            for (const [plan, count] of Object.entries(plans)) {
+                const row = planTable.insertRow();
+                row.insertCell(0).textContent = plan;
+                row.insertCell(1).textContent = count;
+                row.insertCell(2).textContent = total > 0 ? ((count / total) * 100).toFixed(1) + '%' : '0%';
+            }
+        }
+        
+        function loadSampleData() {
+            const sampleCustomers = [
+                { age_group: '18-35', subscription_plan: 'Standard', content_satisfaction: 4, churn_risk_category: 'Low' },
+                { age_group: '35+', subscription_plan: 'Basic', content_satisfaction: 2, churn_risk_category: 'High' },
+                { age_group: '18-35', subscription_plan: 'Premium', content_satisfaction: 5, churn_risk_category: 'Low' },
+                { age_group: 'Under 18', subscription_plan: 'Standard', content_satisfaction: 3, churn_risk_category: 'Medium' }
+            ];
+            displayAnalytics(sampleCustomers);
+        }
+        
+        loadAnalytics();
+    </script>
+</body>
+</html>
